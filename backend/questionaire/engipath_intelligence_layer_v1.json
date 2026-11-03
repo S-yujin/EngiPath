@@ -1,0 +1,646 @@
+{
+  "_meta": {
+    "title": "EngiPath Questionnaire Intelligence Layer — V1",
+    "version": "1.0",
+    "created": "2026-08-18",
+    "description": "Complete intelligence layer configuration: signal state schema, aggregation rules, coverage rules, question selection policy, stopping criteria, reflection classification, student profile schema, and validation rules.",
+    "upstream_dependencies": [
+      "EngiPath_Reflection_Question_Bank_Final_v1.json",
+      "EngiPath_Answer_Signal_Mapping_v1.json"
+    ]
+  },
+
+  "approved_signals": {
+    "INT1": { "code": "INT1", "label": "Domain Interest",            "category": "interests",        "priority": "high" },
+    "INT2": { "code": "INT2", "label": "Task Enjoyment",             "category": "interests",        "priority": "high" },
+    "SELF1": { "code": "SELF1", "label": "Perceived Strength",       "category": "self_perception",  "priority": "high" },
+    "SELF2": { "code": "SELF2", "label": "Perceived Development Area","category": "self_perception",  "priority": "high" },
+    "SELF3": { "code": "SELF3", "label": "Confidence Level",         "category": "self_perception",  "priority": "high" },
+    "PS1":   { "code": "PS1",  "label": "Problem Framing",           "category": "capability",       "priority": "high" },
+    "PS2":   { "code": "PS2",  "label": "Troubleshooting",           "category": "capability",       "priority": "high" },
+    "LEARN1":{ "code": "LEARN1","label": "Learning Initiative",      "category": "capability",       "priority": "high" },
+    "LEARN2":{ "code": "LEARN2","label": "Strategy Adaptation",      "category": "capability",       "priority": "medium" },
+    "EXEC1": { "code": "EXEC1","label": "Independence",              "category": "capability",       "priority": "high" },
+    "EXEC2": { "code": "EXEC2","label": "Initiative & Ownership",    "category": "capability",       "priority": "medium" },
+    "COM1":  { "code": "COM1", "label": "Idea Communication",        "category": "capability",       "priority": "medium" },
+    "COM2":  { "code": "COM2", "label": "Team Contribution",         "category": "capability",       "priority": "medium" },
+    "MGMT1": { "code": "MGMT1","label": "Prioritisation",            "category": "capability",       "priority": "medium" },
+    "MGMT2": { "code": "MGMT2","label": "Response to Setbacks",      "category": "capability",       "priority": "medium" },
+    "PREF1": { "code": "PREF1","label": "Learning Approach",         "category": "preferences",      "priority": "high" }
+  },
+
+  "information_classes": [
+    "interests",
+    "self_perception",
+    "capability_evidence",
+    "preferences"
+  ],
+
+  "student_signal_state_schema": {
+    "_doc": "The live state object that evolves during a questionnaire session. Raw observations are preserved and never discarded after aggregation.",
+    "student_id": "string",
+    "session_id": "string",
+    "created_at": "ISO8601 timestamp",
+    "updated_at": "ISO8601 timestamp",
+
+    "questionnaire_state": {
+      "questions_asked": ["question_id"],
+      "questions_answered": ["question_id"],
+      "questions_skipped": ["question_id"],
+      "current_question_count": 0,
+      "current_phase": "core | contextual | adaptive | reflection | complete",
+      "core_completed": false,
+      "heard_summary_delivered": false,
+      "student_confirmed_summary": null
+    },
+
+    "context": {
+      "major": null,
+      "year": null,
+      "country": null
+    },
+
+    "interests": {
+      "domain_interests": {
+        "_doc": "Array of selected interest values from INT1 mappings",
+        "values": [],
+        "sources": []
+      },
+      "task_enjoyment": {
+        "_doc": "Array of selected task enjoyment values from INT2 mappings",
+        "values": [],
+        "sources": []
+      }
+    },
+
+    "self_perception": {
+      "_doc": "Stores self-reported perceptions separately from capability evidence",
+      "perceived_strengths": {
+        "values": [],
+        "sources": []
+      },
+      "perceived_development_areas": {
+        "values": [],
+        "sources": []
+      },
+      "confidence": {
+        "_doc": "Per-dimension confidence as reported by the student. Keys are dimension codes or labels.",
+        "_example": {
+          "problem_solving": { "level": "high", "source": "Q08:A" },
+          "communication":   { "level": "low",  "source": "Q08:C" }
+        }
+      }
+    },
+
+    "capability_signals": {
+      "_doc": "One entry per capability signal code. Each preserves all raw observations plus an aggregate summary.",
+      "_structure_per_signal": {
+        "observations": [
+          {
+            "question_id": "string",
+            "option_id": "string",
+            "signal_class": "capability_evidence",
+            "strength": 0.0,
+            "direction": "positive | developing | neutral",
+            "source_type": "behavioural_choice | scenario_response | past_experience | peer_reliance | self_report",
+            "evidence_quality": "low | moderate | high",
+            "evidence_state": "available | insufficient",
+            "interpretation": "string",
+            "timestamp": "ISO8601"
+          }
+        ],
+        "aggregate": {
+          "_doc": "Populated by aggregation rules. See aggregation_config."
+        }
+      }
+    },
+
+    "preferences": {
+      "_doc": "Stores preference signals. Preferences never affect capability strength.",
+      "learning_approach": {
+        "values": [],
+        "sources": []
+      }
+    },
+
+    "coverage": {
+      "_doc": "Per-signal coverage status. Updated after each answer.",
+      "_structure_per_signal": {
+        "status": "unobserved | insufficient | partial | sufficient",
+        "observation_count": 0,
+        "usable_observation_count": 0,
+        "source_diversity": 0
+      }
+    },
+
+    "contradictions": [
+      {
+        "contradiction_id": "string",
+        "type": "self_vs_evidence | evidence_vs_evidence | broad_negative_narrow_evidence",
+        "signals_involved": ["signal_code"],
+        "description": "string",
+        "severity": "low | medium | high",
+        "resolved": false,
+        "resolution_question_id": null,
+        "sources": []
+      }
+    ],
+
+    "unresolved_areas": [
+      {
+        "signal": "signal_code",
+        "reason": "insufficient_evidence | contradiction_unresolved | ambiguous_self_perception",
+        "priority": "low | medium | high"
+      }
+    ]
+  },
+
+  "aggregation_config": {
+    "_doc": "Deliverable B — Deterministic V1 rules for combining multiple observations into one aggregated signal summary.",
+
+    "source_type_weights": {
+      "_doc": "Evidence reliability hierarchy. Higher weight = more reliable evidence. Used in state_confidence calculation, NOT in experience_strength.",
+      "self_report":        0.30,
+      "scenario_response":  0.50,
+      "behavioural_choice": 0.65,
+      "past_experience":    0.80,
+      "peer_reliance":      0.85,
+      "repeated_experience": 0.90,
+      "externally_supported": 1.00
+    },
+
+    "evidence_quality_multiplier": {
+      "low":      0.50,
+      "moderate": 0.80,
+      "high":     1.00
+    },
+
+    "direction_mapping": {
+      "positive":    1.0,
+      "developing":  0.5,
+      "neutral":     0.0,
+      "development": 0.5
+    },
+
+    "aggregation_algorithm": {
+      "steps": [
+        {
+          "step": 1,
+          "name": "compute_adjusted_strength_per_observation",
+          "formula": "adj_strength_i = strength_i * evidence_quality_multiplier[eq_i]  (source_type weights are NOT applied here — they affect state_confidence instead)"
+        },
+        {
+          "step": 2,
+          "name": "compute_raw_experience_strength",
+          "formula": "raw_exp = sum(adj_strength_i * direction_mapping[dir_i]) / count(usable_observations) — only for observations where evidence_state == 'available'"
+        },
+        {
+          "step": 3,
+          "name": "apply_consistency_adjustment",
+          "formula": "consistency_factor: high=1.0, mixed=0.85, low=0.70, insufficient=0.60. experience_strength = clamp(raw_exp * factor, 0.0, 1.0)"
+        },
+        {
+          "step": 4,
+          "name": "compute_state_confidence",
+          "formula": "state_confidence = clamp(base_confidence * source_reliability_factor * diversity_bonus * quality_bonus * consistency_factor, 0.0, 1.0).  source_reliability_factor = 0.4 + 0.6 * avg(source_type_weights of observations)"
+        }
+      ]
+    },
+
+    "state_confidence_formula": {
+      "base_confidence_by_observation_count": {
+        "0": 0.00,
+        "1": 0.30,
+        "2": 0.55,
+        "3": 0.70,
+        "4_plus": 0.80
+      },
+      "diversity_bonus": {
+        "1_source_type":  1.00,
+        "2_source_types": 1.10,
+        "3_plus_source_types": 1.20
+      },
+      "quality_bonus": {
+        "low": 0.85,
+        "moderate": 1.00,
+        "high": 1.10
+      },
+      "consistency_factor": {
+        "high": 1.00,
+        "mixed": 0.75,
+        "low": 0.50,
+        "insufficient": 0.40
+      }
+    },
+
+    "consistency_classification": {
+      "rules": [
+        { "condition": "fewer than 2 usable observations", "result": "insufficient" },
+        { "condition": "all usable observations share direction AND strength range within 0.25", "result": "high" },
+        { "condition": "majority share direction but strength spread > 0.25", "result": "mixed" },
+        { "condition": "observations have opposing directions with large gap", "result": "low" }
+      ],
+      "strength_range_threshold": 0.25
+    },
+
+    "evidence_quality_aggregation": {
+      "rules": [
+        { "condition": "any observation quality == 'high' AND usable_observation_count >= 2", "result": "high" },
+        { "condition": "majority of observations quality >= 'moderate'", "result": "moderate" },
+        { "condition": "all observations quality == 'low'", "result": "low" }
+      ]
+    },
+
+    "insufficient_evidence_handling": {
+      "include_in_coverage": true,
+      "include_in_strength": false,
+      "include_in_state_confidence": false
+    },
+
+    "aggregated_signal_output_schema": {
+      "signal": "signal_code",
+      "experience_strength": 0.00,
+      "observation_count": 0,
+      "usable_observation_count": 0,
+      "source_diversity": 0,
+      "evidence_quality": "low | moderate | high",
+      "consistency": "high | mixed | low | insufficient",
+      "coverage": "unobserved | insufficient | partial | sufficient",
+      "state_confidence": 0.00,
+      "supporting_sources": ["Q_id:option_id"],
+      "conflicting_sources": ["Q_id:option_id"]
+    }
+  },
+
+  "coverage_config": {
+    "_doc": "Deliverable C — Rules for determining whether EngiPath has enough information about each signal.",
+
+    "coverage_levels": {
+      "unobserved": {
+        "description": "No usable response exists for this signal.",
+        "condition": "usable_observation_count == 0"
+      },
+      "insufficient": {
+        "description": "One weak or highly ambiguous signal only.",
+        "conditions": [
+          "usable_observation_count == 1 AND evidence_quality == 'low'",
+          "usable_observation_count == 1 AND consistency == 'insufficient'"
+        ]
+      },
+      "partial": {
+        "description": "Some relevant information exists but not enough for confident interpretation.",
+        "conditions": [
+          "usable_observation_count == 1 AND evidence_quality in ['moderate', 'high']",
+          "usable_observation_count == 2 AND consistency in ['low', 'mixed']",
+          "usable_observation_count >= 2 AND source_diversity == 1"
+        ]
+      },
+      "sufficient": {
+        "description": "Multiple useful observations OR one strong experience plus corroborating evidence.",
+        "conditions": [
+          "usable_observation_count >= 2 AND consistency in ['high', 'mixed'] AND source_diversity >= 2",
+          "usable_observation_count >= 3 AND consistency == 'high'",
+          "usable_observation_count >= 1 AND evidence_quality == 'high' AND source_diversity >= 2"
+        ]
+      }
+    },
+
+    "classification_order": ["sufficient", "partial", "insufficient", "unobserved"],
+
+    "minimum_profile_coverage": {
+      "minimum_sufficient_signals": 6,
+      "minimum_partial_or_better_signals": 10,
+      "maximum_unobserved_priority_signals": 3,
+      "must_cover_at_least_one_from_each": ["interests", "self_perception", "capability", "preferences"]
+    }
+  },
+
+  "contradiction_detection_config": {
+    "contradiction_types": {
+      "self_vs_evidence": {
+        "rules": [
+          {
+            "id": "CR01",
+            "name": "low_confidence_high_experience",
+            "condition": "self_perception.confidence[dimension] == 'low' AND capability_signals[signal].aggregate.experience_strength >= 0.70 AND capability_signals[signal].aggregate.state_confidence >= 0.50",
+            "severity": "high"
+          },
+          {
+            "id": "CR02",
+            "name": "high_confidence_low_experience",
+            "condition": "self_perception.confidence[dimension] == 'high' AND capability_signals[signal].aggregate.experience_strength < 0.40 AND capability_signals[signal].aggregate.usable_observation_count >= 2",
+            "severity": "medium"
+          }
+        ]
+      },
+      "evidence_vs_evidence": {
+        "rules": [
+          {
+            "id": "CR03",
+            "name": "opposing_capability_observations",
+            "condition": "exists obs_a direction 'positive' strength >= 0.70, AND obs_b direction 'developing' strength <= 0.40 for same signal",
+            "severity": "high"
+          }
+        ]
+      },
+      "broad_negative_narrow_evidence": {
+        "rules": [
+          {
+            "id": "CR04",
+            "name": "broad_self_criticism_with_partial_strength",
+            "condition": "perceived_development_area in dimension D AND capability evidence for sub-signal >= 0.60",
+            "severity": "medium"
+          }
+        ]
+      }
+    },
+
+    "signal_to_self_perception_mapping": {
+      "PS1":   "problem_solving",
+      "PS2":   "problem_solving",
+      "LEARN1": "learning",
+      "LEARN2": "learning",
+      "EXEC1": "independence",
+      "EXEC2": "initiative",
+      "COM1":  "communication",
+      "COM2":  "teamwork",
+      "MGMT1": "organisation",
+      "MGMT2": "resilience"
+    }
+  },
+
+  "question_selection_config": {
+    "_doc": "Deliverable D — Policy for selecting the next question during a session.",
+
+    "selection_hierarchy": [
+      { "priority": 1, "source": "core",              "method": "deterministic_order" },
+      { "priority": 2, "source": "contextual",        "method": "utility_ranked" },
+      { "priority": 3, "source": "adaptive",          "method": "utility_ranked" },
+      { "priority": 4, "source": "llm_clarification", "method": "llm_generated", "max_per_session": 2 }
+    ],
+
+    "core_question_order": {
+      "phase_1_context_interests":   ["Q01", "Q02"],
+      "phase_2_self_perception":     ["Q06", "Q07", "Q08"],
+      "phase_3_problem_solving":     ["Q13", "Q14"],
+      "phase_4_learning":            ["Q20", "Q21"],
+      "phase_5_execution":           ["Q27", "Q28"],
+      "phase_6_communication":       ["Q34", "Q35"],
+      "phase_7_management":          ["Q41", "Q45"],
+      "phase_8_preferences":         ["Q47", "Q49"]
+    },
+
+    "adaptive_selection_priority": [
+      { "rank": 1, "purpose": "resolve_major_contradiction",         "utility_bonus": 5.0 },
+      { "rank": 2, "purpose": "clarify_self_vs_experience_mismatch","utility_bonus": 4.0 },
+      { "rank": 3, "purpose": "clarify_high_impact_partial_signal", "utility_bonus": 3.0 },
+      { "rank": 4, "purpose": "improve_source_diversity",           "utility_bonus": 2.0 },
+      { "rank": 5, "purpose": "fill_useful_unknown",                "utility_bonus": 1.0 }
+    ],
+
+    "question_utility_formula": {
+      "formula": "utility = information_need + contradiction_value + signal_importance + diversity_gain - redundancy_penalty - fatigue_penalty",
+      "components": {
+        "information_need": {
+          "unobserved":   4.0,
+          "insufficient": 3.0,
+          "partial":      2.0,
+          "sufficient":   0.5
+        },
+        "contradiction_value": {
+          "high":   5.0,
+          "medium": 3.0,
+          "low":    1.5,
+          "none":   0.0
+        },
+        "signal_importance": {
+          "high":   1.5,
+          "medium": 1.0
+        },
+        "diversity_gain": {
+          "new_source_type":      2.0,
+          "existing_source_type": 0.0
+        },
+        "redundancy_penalty": {
+          "sufficient": -3.0,
+          "partial":    -0.5,
+          "other":       0.0
+        },
+        "fatigue_penalty": {
+          "formula": "max(0, (current_question_count - 16) * 1.5)"
+        }
+      }
+    },
+
+    "llm_clarification_constraints": {
+      "must_target_existing_signal": true,
+      "must_provide_meaningful_improvement": true,
+      "evidence_quality_cap": "low",
+      "source_type": "scenario_response",
+      "scoring_weight": "low"
+    }
+  },
+
+  "stopping_config": {
+    "_doc": "Deliverable E — Questionnaire stopping criteria.",
+
+    "question_limits": {
+      "minimum_questions": 15,
+      "target_questions_min": 16,
+      "target_questions_max": 18,
+      "hard_maximum_questions": 20,
+      "maximum_adaptive_questions": 4,
+      "maximum_llm_clarifications": 2
+    },
+
+    "normal_stop_conditions": [
+      "core_questions_completed",
+      "current_question_count >= minimum_questions",
+      "minimum_profile_coverage_achieved",
+      "no_high_severity_unresolved_contradictions"
+    ],
+
+    "force_stop_conditions": [
+      "current_question_count >= hard_maximum_questions",
+      "user_ended_early"
+    ],
+
+    "completion_reasons": [
+      "minimum_coverage_met",
+      "hard_maximum_reached",
+      "user_ended_early",
+      "insufficient_responses"
+    ]
+  },
+
+  "heard_summary_config": {
+    "generation_trigger": "After stopping criteria met, before final profile.",
+
+    "summary_categories": [
+      { "category": "experience_context",    "template": "Most of your experience so far comes from {experience_context}." },
+      { "category": "perceived_strengths",   "template": "You currently see {perceived_strengths} as one of your stronger areas." },
+      { "category": "perceived_development", "template": "You feel less confident when it comes to {perceived_development_areas}." },
+      { "category": "interests",             "template": "You're most curious about {domain_interests}." },
+      { "category": "learning_preference",   "template": "You tend to prefer learning by {learning_approach}." },
+      { "category": "hidden_strength_hint",  "template": "Your responses suggest you may have more experience in {signal_label} than you give yourself credit for.", "condition": "state_confidence >= 0.50 AND CR01 detected" }
+    ],
+
+    "student_response_options": ["yes", "mostly", "not_really"],
+
+    "correction_handling": {
+      "yes":        "No changes to signal state.",
+      "mostly":     "Flag minor discrepancy. Optional free-text correction.",
+      "not_really": "Present specific items for correction. Update observation weights or add correction annotation."
+    }
+  },
+
+  "reflection_config": {
+    "_doc": "Deliverable F — Reflection / calibration classification rules.",
+
+    "categories": {
+      "supported_strength": {
+        "label": "Supported Strength",
+        "meaning": "The student's confidence is reasonably supported by available experience.",
+        "conditions": { "student_confidence": "high", "experience_strength": ">= 0.70", "state_confidence": ">= 0.50" },
+        "reason_code": "high_self_view_high_experience"
+      },
+      "possible_hidden_strength": {
+        "label": "Possible Hidden Strength",
+        "meaning": "Available experience appears stronger than the student's self-view.",
+        "conditions": { "student_confidence": "low", "experience_strength": ">= 0.65", "state_confidence": ">= 0.50" },
+        "reason_code": "low_self_view_high_experience",
+        "caution": "Do NOT label student 'underconfident'."
+      },
+      "worth_validating": {
+        "label": "Worth Validating",
+        "meaning": "Confidence may be ahead of what EngiPath can verify.",
+        "conditions": { "student_confidence": "high", "experience_strength": "< 0.40 OR coverage in ['unobserved', 'insufficient']" },
+        "reason_code": "high_self_view_low_experience",
+        "caution": "Do NOT label student 'overconfident'."
+      },
+      "developing_picture": {
+        "label": "Developing Picture",
+        "meaning": "Mixed or moderate — the picture is forming but not yet clear.",
+        "reason_code": "moderate_evidence_or_mixed"
+      },
+      "still_taking_shape": {
+        "label": "Still Taking Shape",
+        "meaning": "Not enough experience to form a useful view. Does NOT mean 'weak'.",
+        "conditions": { "coverage": "in ['unobserved', 'insufficient'] OR state_confidence < 0.30" },
+        "reason_code": "insufficient_information"
+      }
+    },
+
+    "thresholds": {
+      "low":      { "min": 0.00, "max": 0.39 },
+      "moderate": { "min": 0.40, "max": 0.69 },
+      "high":     { "min": 0.70, "max": 1.00 }
+    },
+
+    "state_confidence_gate": {
+      "minimum_for_supported_strength":        0.50,
+      "minimum_for_possible_hidden_strength":  0.50,
+      "minimum_for_worth_validating":          0.00,
+      "below_gate_fallback": "developing_picture or still_taking_shape"
+    },
+
+    "reflection_output_schema": {
+      "signal": "signal_code",
+      "classification": "string",
+      "student_self_view": "low | moderate | high | null",
+      "experience_strength": 0.00,
+      "state_confidence": 0.00,
+      "coverage": "string",
+      "supporting_sources": [],
+      "contradicting_sources": [],
+      "reason_code": "string"
+    }
+  },
+
+  "student_profile_schema": {
+    "_doc": "Deliverable G — Final Student Profile output schema.",
+
+    "student_id": "string",
+    "profile_version": 1,
+    "generated_at": "ISO8601 timestamp",
+    "questionnaire_version": "1.0",
+
+    "context": { "major": null, "year": null, "country": null },
+
+    "interests": {
+      "domains": [],
+      "task_enjoyment": []
+    },
+
+    "self_perception": {
+      "perceived_strengths": [],
+      "perceived_development_areas": [],
+      "confidence": {}
+    },
+
+    "capabilities": {
+      "_per_signal": {
+        "label": "string",
+        "experience_strength": 0.00,
+        "state_confidence": 0.00,
+        "coverage": "string",
+        "evidence_quality": "string",
+        "consistency": "string",
+        "observation_count": 0,
+        "supporting_sources": []
+      }
+    },
+
+    "reflection": {
+      "supported_strengths": [],
+      "possible_hidden_strengths": [],
+      "areas_to_validate": [],
+      "developing_picture": [],
+      "still_taking_shape": []
+    },
+
+    "preferences": {
+      "learning_approach": { "primary": null, "secondary": null }
+    },
+
+    "unknowns": [],
+
+    "profile_metadata": {
+      "completion_status": "string",
+      "completion_reason": "string",
+      "question_count": 0,
+      "core_questions_answered": 0,
+      "contextual_questions_answered": 0,
+      "adaptive_questions_answered": 0,
+      "llm_clarifications_used": 0,
+      "signals_with_sufficient_coverage": 0,
+      "signals_with_partial_coverage": 0,
+      "signals_unobserved": 0,
+      "heard_summary_confirmed": null,
+      "corrections_applied": 0,
+      "contradictions_detected": 0,
+      "contradictions_resolved": 0
+    }
+  },
+
+  "validation_rules": {
+    "_doc": "Deliverable I — 15 safety/validation rules.",
+    "rules": [
+      { "id": "VR01", "rule": "Lack of evidence never becomes zero ability.", "check": "No signal with coverage 'unobserved' or 'insufficient' has experience_strength set to 0.0 as a conclusion." },
+      { "id": "VR02", "rule": "Preferences never affect capability strength.", "check": "PREF1 values stored separately; never included in capability_signals aggregation." },
+      { "id": "VR03", "rule": "Self-confidence never becomes capability evidence.", "check": "self_perception observations never enter capability_signals. experience_strength computed only from capability_evidence." },
+      { "id": "VR04", "rule": "One response cannot create high-confidence conclusion.", "check": "If usable_observation_count == 1, state_confidence capped at 0.30, coverage cannot be 'sufficient'." },
+      { "id": "VR05", "rule": "Low-confidence interpretations remain uncertain.", "check": "If state_confidence < 0.30, classification must be 'still_taking_shape' or 'developing_picture'." },
+      { "id": "VR06", "rule": "Unknown areas remain represented.", "check": "All signals with coverage 'unobserved' or 'insufficient' appear in profile 'unknowns'." },
+      { "id": "VR07", "rule": "Raw supporting sources remain traceable.", "check": "Every classification includes supporting_sources array. Raw observations preserved." },
+      { "id": "VR08", "rule": "Generated clarifications have lower evidence weight.", "check": "LLM-generated responses capped at evidence_quality 'low'." },
+      { "id": "VR09", "rule": "Question count cannot exceed hard maximum.", "check": "current_question_count never exceeds 20." },
+      { "id": "VR10", "rule": "System does not recommend careers.", "check": "No career/job fields in Student Profile." },
+      { "id": "VR11", "rule": "System does not generate growth plans.", "check": "No growth_plan/development_plan fields." },
+      { "id": "VR12", "rule": "System does not create personality types.", "check": "No personality/type/archetype fields." },
+      { "id": "VR13", "rule": "System does not use single overall score.", "check": "No overall_score/total_score fields." },
+      { "id": "VR14", "rule": "System does not rank students.", "check": "No rank/percentile/comparison fields." },
+      { "id": "VR15", "rule": "Every reflection category is explainable.", "check": "Every reflection entry includes reason_code, supporting_sources, student_self_view, experience_strength, state_confidence." }
+    ]
+  }
+}

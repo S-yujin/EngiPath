@@ -1,0 +1,4814 @@
+{
+  "schema_version": "1.0",
+  "question_bank": [
+    {
+      "id": "Q01",
+      "version": 1,
+      "layer": "core",
+      "question_type": "quick_select",
+      "dimension": [
+        "interests_motivation"
+      ],
+      "signals": [
+        "INT1"
+      ],
+      "text": {
+        "en": "Which areas are you currently most curious about?",
+        "zh": null
+      },
+      "instruction": {
+        "en": "Choose up to 5.",
+        "zh": null
+      },
+      "options": [
+        {
+          "id": "A",
+          "text": {
+            "en": "Software and computing",
+            "zh": null
+          }
+        },
+        {
+          "id": "B",
+          "text": {
+            "en": "AI and data",
+            "zh": null
+          }
+        },
+        {
+          "id": "C",
+          "text": {
+            "en": "Robotics and automation",
+            "zh": null
+          }
+        },
+        {
+          "id": "D",
+          "text": {
+            "en": "Electronics and embedded systems",
+            "zh": null
+          }
+        },
+        {
+          "id": "E",
+          "text": {
+            "en": "Mechanical design and engineering",
+            "zh": null
+          }
+        },
+        {
+          "id": "F",
+          "text": {
+            "en": "Manufacturing and production",
+            "zh": null
+          }
+        },
+        {
+          "id": "G",
+          "text": {
+            "en": "Energy and sustainability",
+            "zh": null
+          }
+        },
+        {
+          "id": "H",
+          "text": {
+            "en": "Infrastructure and cities",
+            "zh": null
+          }
+        },
+        {
+          "id": "I",
+          "text": {
+            "en": "Materials and chemical engineering",
+            "zh": null
+          }
+        },
+        {
+          "id": "J",
+          "text": {
+            "en": "Science and research",
+            "zh": null
+          }
+        },
+        {
+          "id": "K",
+          "text": {
+            "en": "Business and product development",
+            "zh": null
+          }
+        },
+        {
+          "id": "L",
+          "text": {
+            "en": "Something else",
+            "zh": null
+          }
+        },
+        {
+          "id": "M",
+          "text": {
+            "en": "I'm still exploring",
+            "zh": null
+          }
+        }
+      ],
+      "allow_free_text": false,
+      "allow_multiple": true,
+      "max_selections": 5,
+      "applicability": {
+        "major": [
+          "all"
+        ],
+        "year": [
+          "all"
+        ],
+        "country": [
+          "all"
+        ]
+      },
+      "trigger": null,
+      "required": false,
+      "source_metadata": {
+        "original_id": "Q01",
+        "original_title": "Domain Interest",
+        "original_section": "A. Interests & Motivation"
+      },
+      "conversion_status": "ok",
+      "conversion_notes": []
+    },
+    {
+      "id": "Q02",
+      "version": 1,
+      "layer": "core",
+      "question_type": "quick_select",
+      "dimension": [
+        "interests_motivation"
+      ],
+      "signals": [
+        "INT2"
+      ],
+      "text": {
+        "en": "When you're working on a project, which parts do you usually enjoy most?",
+        "zh": null
+      },
+      "instruction": {
+        "en": "Choose up to 3.",
+        "zh": null
+      },
+      "options": [
+        {
+          "id": "A",
+          "text": {
+            "en": "Understanding the problem",
+            "zh": null
+          }
+        },
+        {
+          "id": "B",
+          "text": {
+            "en": "Coming up with ideas",
+            "zh": null
+          }
+        },
+        {
+          "id": "C",
+          "text": {
+            "en": "Building or implementing something",
+            "zh": null
+          }
+        },
+        {
+          "id": "D",
+          "text": {
+            "en": "Analysing information",
+            "zh": null
+          }
+        },
+        {
+          "id": "E",
+          "text": {
+            "en": "Testing and improving",
+            "zh": null
+          }
+        },
+        {
+          "id": "F",
+          "text": {
+            "en": "Fixing things that aren't working",
+            "zh": null
+          }
+        },
+        {
+          "id": "G",
+          "text": {
+            "en": "Organising the team",
+            "zh": null
+          }
+        },
+        {
+          "id": "H",
+          "text": {
+            "en": "Explaining or presenting the result",
+            "zh": null
+          }
+        },
+        {
+          "id": "I",
+          "text": {
+            "en": "Learning something new along the way",
+            "zh": null
+          }
+        }
+      ],
+      "allow_free_text": false,
+      "allow_multiple": true,
+      "max_selections": 3,
+      "applicability": {
+        "major": [
+          "all"
+        ],
+        "year": [
+          "all"
+        ],
+        "country": [
+          "all"
+        ]
+      },
+      "trigger": null,
+      "required": false,
+      "source_metadata": {
+        "original_id": "Q02",
+        "original_title": "Task Enjoyment",
+        "original_section": "A. Interests & Motivation"
+      },
+      "conversion_status": "ok",
+      "conversion_notes": []
+    },
+    {
+      "id": "Q03",
+      "version": 1,
+      "layer": "contextual",
+      "question_type": "past_experience",
+      "dimension": [
+        "interests_motivation"
+      ],
+      "signals": [
+        "INT2"
+      ],
+      "text": {
+        "en": "Think about a project, module, or activity you genuinely enjoyed. What part made it enjoyable?",
+        "zh": null
+      },
+      "instruction": {
+        "en": null,
+        "zh": null
+      },
+      "options": [
+        {
+          "id": "A",
+          "text": {
+            "en": "The topic itself interested me",
+            "zh": null
+          }
+        },
+        {
+          "id": "B",
+          "text": {
+            "en": "I enjoyed solving the problem",
+            "zh": null
+          }
+        },
+        {
+          "id": "C",
+          "text": {
+            "en": "I liked creating something tangible",
+            "zh": null
+          }
+        },
+        {
+          "id": "D",
+          "text": {
+            "en": "I enjoyed working with the people involved",
+            "zh": null
+          }
+        },
+        {
+          "id": "E",
+          "text": {
+            "en": "I liked learning something difficult",
+            "zh": null
+          }
+        },
+        {
+          "id": "F",
+          "text": {
+            "en": "I enjoyed seeing a clear result",
+            "zh": null
+          }
+        },
+        {
+          "id": "G",
+          "text": {
+            "en": "Something else",
+            "zh": null
+          }
+        }
+      ],
+      "allow_free_text": false,
+      "allow_multiple": false,
+      "max_selections": 1,
+      "applicability": {
+        "major": [
+          "all"
+        ],
+        "year": [
+          "all"
+        ],
+        "country": [
+          "all"
+        ]
+      },
+      "trigger": null,
+      "required": false,
+      "source_metadata": {
+        "original_id": "Q03",
+        "original_title": "Enjoyed Experience",
+        "original_section": "A. Interests & Motivation"
+      },
+      "conversion_status": "ok",
+      "conversion_notes": []
+    },
+    {
+      "id": "Q04",
+      "version": 1,
+      "layer": "contextual",
+      "question_type": "micro_scenario",
+      "dimension": [
+        "interests_motivation"
+      ],
+      "signals": [
+        "INT1"
+      ],
+      "text": {
+        "en": "If you could choose your next project, which would sound most interesting to you?",
+        "zh": null
+      },
+      "instruction": {
+        "en": null,
+        "zh": null
+      },
+      "options": [
+        {
+          "id": "A",
+          "text": {
+            "en": "Building a useful product or application",
+            "zh": null
+          }
+        },
+        {
+          "id": "B",
+          "text": {
+            "en": "Investigating why something happens",
+            "zh": null
+          }
+        },
+        {
+          "id": "C",
+          "text": {
+            "en": "Improving an existing system",
+            "zh": null
+          }
+        },
+        {
+          "id": "D",
+          "text": {
+            "en": "Designing something from scratch",
+            "zh": null
+          }
+        },
+        {
+          "id": "E",
+          "text": {
+            "en": "Analysing data to find patterns",
+            "zh": null
+          }
+        },
+        {
+          "id": "F",
+          "text": {
+            "en": "Solving a practical real-world problem",
+            "zh": null
+          }
+        },
+        {
+          "id": "G",
+          "text": {
+            "en": "Exploring a new technology or idea",
+            "zh": null
+          }
+        },
+        {
+          "id": "H",
+          "text": {
+            "en": "I'm not sure yet",
+            "zh": null
+          }
+        }
+      ],
+      "allow_free_text": false,
+      "allow_multiple": false,
+      "max_selections": 1,
+      "applicability": {
+        "major": [
+          "all"
+        ],
+        "year": [
+          "all"
+        ],
+        "country": [
+          "all"
+        ]
+      },
+      "trigger": null,
+      "required": false,
+      "source_metadata": {
+        "original_id": "Q04",
+        "original_title": "Project Interest",
+        "original_section": "A. Interests & Motivation"
+      },
+      "conversion_status": "ok",
+      "conversion_notes": []
+    },
+    {
+      "id": "Q05",
+      "version": 1,
+      "layer": "contextual",
+      "question_type": "self_reflection",
+      "dimension": [
+        "interests_motivation"
+      ],
+      "signals": [
+        "INT2"
+      ],
+      "text": {
+        "en": "At the end of a project, which outcome would feel most satisfying to you?",
+        "zh": null
+      },
+      "instruction": {
+        "en": null,
+        "zh": null
+      },
+      "options": [
+        {
+          "id": "A",
+          "text": {
+            "en": "Something useful actually works",
+            "zh": null
+          }
+        },
+        {
+          "id": "B",
+          "text": {
+            "en": "I understand the topic much better",
+            "zh": null
+          }
+        },
+        {
+          "id": "C",
+          "text": {
+            "en": "We solved a difficult problem",
+            "zh": null
+          }
+        },
+        {
+          "id": "D",
+          "text": {
+            "en": "The final result is well designed and polished",
+            "zh": null
+          }
+        },
+        {
+          "id": "E",
+          "text": {
+            "en": "The team worked well together",
+            "zh": null
+          }
+        },
+        {
+          "id": "F",
+          "text": {
+            "en": "I can clearly explain what we learned",
+            "zh": null
+          }
+        },
+        {
+          "id": "G",
+          "text": {
+            "en": "The project opens up something new to explore",
+            "zh": null
+          }
+        },
+        {
+          "id": "H",
+          "text": {
+            "en": "It depends on the project",
+            "zh": null
+          }
+        }
+      ],
+      "allow_free_text": false,
+      "allow_multiple": false,
+      "max_selections": 1,
+      "applicability": {
+        "major": [
+          "all"
+        ],
+        "year": [
+          "all"
+        ],
+        "country": [
+          "all"
+        ]
+      },
+      "trigger": null,
+      "required": false,
+      "source_metadata": {
+        "original_id": "Q05",
+        "original_title": "Project Satisfaction",
+        "original_section": "A. Interests & Motivation"
+      },
+      "conversion_status": "ok",
+      "conversion_notes": []
+    },
+    {
+      "id": "Q06",
+      "version": 1,
+      "layer": "core",
+      "question_type": "self_reflection",
+      "dimension": [
+        "self_perception_confidence"
+      ],
+      "signals": [
+        "SELF1"
+      ],
+      "text": {
+        "en": "Which currently feels most like a strength for you?",
+        "zh": null
+      },
+      "instruction": {
+        "en": null,
+        "zh": null
+      },
+      "options": [
+        {
+          "id": "A",
+          "text": {
+            "en": "Solving unfamiliar problems",
+            "zh": null
+          }
+        },
+        {
+          "id": "B",
+          "text": {
+            "en": "Learning new things quickly",
+            "zh": null
+          }
+        },
+        {
+          "id": "C",
+          "text": {
+            "en": "Getting things done",
+            "zh": null
+          }
+        },
+        {
+          "id": "D",
+          "text": {
+            "en": "Working with others",
+            "zh": null
+          }
+        },
+        {
+          "id": "E",
+          "text": {
+            "en": "Explaining ideas",
+            "zh": null
+          }
+        },
+        {
+          "id": "F",
+          "text": {
+            "en": "Organising my work",
+            "zh": null
+          }
+        },
+        {
+          "id": "G",
+          "text": {
+            "en": "Technical/domain knowledge",
+            "zh": null
+          }
+        },
+        {
+          "id": "H",
+          "text": {
+            "en": "I'm not sure yet",
+            "zh": null
+          }
+        }
+      ],
+      "allow_free_text": false,
+      "allow_multiple": false,
+      "max_selections": 1,
+      "applicability": {
+        "major": [
+          "all"
+        ],
+        "year": [
+          "all"
+        ],
+        "country": [
+          "all"
+        ]
+      },
+      "trigger": null,
+      "required": false,
+      "source_metadata": {
+        "original_id": "Q06",
+        "original_title": "Perceived Strength",
+        "original_section": "B. Self-Perception & Confidence"
+      },
+      "conversion_status": "ok",
+      "conversion_notes": []
+    },
+    {
+      "id": "Q07",
+      "version": 1,
+      "layer": "core",
+      "question_type": "self_reflection",
+      "dimension": [
+        "self_perception_confidence"
+      ],
+      "signals": [
+        "SELF2"
+      ],
+      "text": {
+        "en": "Which area would you most like to feel more confident in?",
+        "zh": null
+      },
+      "instruction": {
+        "en": null,
+        "zh": null
+      },
+      "options": [
+        {
+          "id": "A",
+          "text": {
+            "en": "Solving unfamiliar problems",
+            "zh": null
+          }
+        },
+        {
+          "id": "B",
+          "text": {
+            "en": "Learning new things quickly",
+            "zh": null
+          }
+        },
+        {
+          "id": "C",
+          "text": {
+            "en": "Getting things done",
+            "zh": null
+          }
+        },
+        {
+          "id": "D",
+          "text": {
+            "en": "Working with others",
+            "zh": null
+          }
+        },
+        {
+          "id": "E",
+          "text": {
+            "en": "Explaining ideas",
+            "zh": null
+          }
+        },
+        {
+          "id": "F",
+          "text": {
+            "en": "Organising my work",
+            "zh": null
+          }
+        },
+        {
+          "id": "G",
+          "text": {
+            "en": "Technical/domain knowledge",
+            "zh": null
+          }
+        },
+        {
+          "id": "H",
+          "text": {
+            "en": "I'm not sure yet",
+            "zh": null
+          }
+        }
+      ],
+      "allow_free_text": false,
+      "allow_multiple": false,
+      "max_selections": 1,
+      "applicability": {
+        "major": [
+          "all"
+        ],
+        "year": [
+          "all"
+        ],
+        "country": [
+          "all"
+        ]
+      },
+      "trigger": null,
+      "required": false,
+      "source_metadata": {
+        "original_id": "Q07",
+        "original_title": "Perceived Development Area",
+        "original_section": "B. Self-Perception & Confidence"
+      },
+      "conversion_status": "ok",
+      "conversion_notes": []
+    },
+    {
+      "id": "Q08",
+      "version": 1,
+      "layer": "core",
+      "question_type": "micro_scenario",
+      "dimension": [
+        "self_perception_confidence"
+      ],
+      "signals": [
+        "SELF3"
+      ],
+      "text": {
+        "en": "When you're given a task you haven't done before, how do you usually feel at the beginning?",
+        "zh": null
+      },
+      "instruction": {
+        "en": null,
+        "zh": null
+      },
+      "options": [
+        {
+          "id": "A",
+          "text": {
+            "en": "Very unsure where to start",
+            "zh": null
+          }
+        },
+        {
+          "id": "B",
+          "text": {
+            "en": "Slightly unsure, but I can usually work it out",
+            "zh": null
+          }
+        },
+        {
+          "id": "C",
+          "text": {
+            "en": "Fairly confident",
+            "zh": null
+          }
+        },
+        {
+          "id": "D",
+          "text": {
+            "en": "Very confident",
+            "zh": null
+          }
+        },
+        {
+          "id": "E",
+          "text": {
+            "en": "It depends heavily on the situation",
+            "zh": null
+          }
+        }
+      ],
+      "allow_free_text": false,
+      "allow_multiple": false,
+      "max_selections": 1,
+      "applicability": {
+        "major": [
+          "all"
+        ],
+        "year": [
+          "all"
+        ],
+        "country": [
+          "all"
+        ]
+      },
+      "trigger": null,
+      "required": false,
+      "source_metadata": {
+        "original_id": "Q08",
+        "original_title": "Confidence in Unfamiliar Tasks",
+        "original_section": "B. Self-Perception & Confidence"
+      },
+      "conversion_status": "ok",
+      "conversion_notes": []
+    },
+    {
+      "id": "Q09",
+      "version": 1,
+      "layer": "contextual",
+      "question_type": "follow_up_reflection",
+      "dimension": [
+        "self_perception_confidence"
+      ],
+      "signals": [
+        "SELF1",
+        "SELF3"
+      ],
+      "text": {
+        "en": "What makes you feel that this is one of your strengths?",
+        "zh": null
+      },
+      "instruction": {
+        "en": null,
+        "zh": null
+      },
+      "options": [
+        {
+          "id": "A",
+          "text": {
+            "en": "I've done it successfully many times",
+            "zh": null
+          }
+        },
+        {
+          "id": "B",
+          "text": {
+            "en": "I usually perform well academically in it",
+            "zh": null
+          }
+        },
+        {
+          "id": "C",
+          "text": {
+            "en": "Other people often rely on me for it",
+            "zh": null
+          }
+        },
+        {
+          "id": "D",
+          "text": {
+            "en": "Teachers or mentors have told me I'm good at it",
+            "zh": null
+          }
+        },
+        {
+          "id": "E",
+          "text": {
+            "en": "It feels natural to me",
+            "zh": null
+          }
+        },
+        {
+          "id": "F",
+          "text": {
+            "en": "I enjoy it, so I assume I'm good at it",
+            "zh": null
+          }
+        },
+        {
+          "id": "G",
+          "text": {
+            "en": "I'm not completely sure",
+            "zh": null
+          }
+        }
+      ],
+      "allow_free_text": false,
+      "allow_multiple": false,
+      "max_selections": 1,
+      "applicability": {
+        "major": [
+          "all"
+        ],
+        "year": [
+          "all"
+        ],
+        "country": [
+          "all"
+        ]
+      },
+      "trigger": {
+        "all": [
+          {
+            "field": "perceived_strength",
+            "operator": "exists",
+            "value": "true"
+          }
+        ],
+        "any": [],
+        "none": []
+      },
+      "required": false,
+      "source_metadata": {
+        "original_id": "Q09",
+        "original_title": "Basis of Strength",
+        "original_section": "B. Self-Perception & Confidence"
+      },
+      "conversion_status": "ok",
+      "conversion_notes": [
+        "Follow-up question on perceived strength (Q06)."
+      ]
+    },
+    {
+      "id": "Q10",
+      "version": 1,
+      "layer": "contextual",
+      "question_type": "follow_up_reflection",
+      "dimension": [
+        "self_perception_confidence"
+      ],
+      "signals": [
+        "SELF2",
+        "SELF3"
+      ],
+      "text": {
+        "en": "What makes you feel this is something you need to improve?",
+        "zh": null
+      },
+      "instruction": {
+        "en": null,
+        "zh": null
+      },
+      "options": [
+        {
+          "id": "A",
+          "text": {
+            "en": "I've struggled with it repeatedly",
+            "zh": null
+          }
+        },
+        {
+          "id": "B",
+          "text": {
+            "en": "I haven't had much experience with it",
+            "zh": null
+          }
+        },
+        {
+          "id": "C",
+          "text": {
+            "en": "My results haven't been strong",
+            "zh": null
+          }
+        },
+        {
+          "id": "D",
+          "text": {
+            "en": "Other people seem better at it",
+            "zh": null
+          }
+        },
+        {
+          "id": "E",
+          "text": {
+            "en": "I feel uncomfortable doing it",
+            "zh": null
+          }
+        },
+        {
+          "id": "F",
+          "text": {
+            "en": "I've received feedback about it",
+            "zh": null
+          }
+        },
+        {
+          "id": "G",
+          "text": {
+            "en": "I'm not really sure — I just don't feel confident",
+            "zh": null
+          }
+        }
+      ],
+      "allow_free_text": false,
+      "allow_multiple": false,
+      "max_selections": 1,
+      "applicability": {
+        "major": [
+          "all"
+        ],
+        "year": [
+          "all"
+        ],
+        "country": [
+          "all"
+        ]
+      },
+      "trigger": {
+        "all": [
+          {
+            "field": "perceived_development_area",
+            "operator": "exists",
+            "value": "true"
+          }
+        ],
+        "any": [],
+        "none": []
+      },
+      "required": false,
+      "source_metadata": {
+        "original_id": "Q10",
+        "original_title": "Basis of Development Area",
+        "original_section": "B. Self-Perception & Confidence"
+      },
+      "conversion_status": "ok",
+      "conversion_notes": [
+        "Follow-up question on perceived development area (Q07)."
+      ]
+    },
+    {
+      "id": "Q11",
+      "version": 1,
+      "layer": "adaptive",
+      "question_type": "follow_up_reflection",
+      "dimension": [
+        "self_perception_confidence"
+      ],
+      "signals": [
+        "SELF3"
+      ],
+      "text": {
+        "en": "When you reflect on engineering domains where you feel confident, what has contributed most to building that confidence?",
+        "zh": null
+      },
+      "instruction": {
+        "en": null,
+        "zh": null
+      },
+      "options": [
+        {
+          "id": "A",
+          "text": {
+            "en": "Coursework",
+            "zh": null
+          }
+        },
+        {
+          "id": "B",
+          "text": {
+            "en": "A project",
+            "zh": null
+          }
+        },
+        {
+          "id": "C",
+          "text": {
+            "en": "Internship or work",
+            "zh": null
+          }
+        },
+        {
+          "id": "D",
+          "text": {
+            "en": "Competition or research",
+            "zh": null
+          }
+        },
+        {
+          "id": "E",
+          "text": {
+            "en": "Feedback from others",
+            "zh": null
+          }
+        },
+        {
+          "id": "F",
+          "text": {
+            "en": "Mostly my own feeling",
+            "zh": null
+          }
+        },
+        {
+          "id": "G",
+          "text": {
+            "en": "I haven't had much direct experience yet",
+            "zh": null
+          }
+        }
+      ],
+      "allow_free_text": false,
+      "allow_multiple": false,
+      "max_selections": 1,
+      "applicability": {
+        "major": [
+          "all"
+        ],
+        "year": [
+          "all"
+        ],
+        "country": [
+          "all"
+        ]
+      },
+      "trigger": {
+        "all": [
+          {
+            "field": "self_confidence",
+            "operator": "eq",
+            "value": "high"
+          }
+        ],
+        "any": [],
+        "none": []
+      },
+      "required": false,
+      "source_metadata": {
+        "original_id": "Q11",
+        "original_title": "Confidence Evidence",
+        "original_section": "B. Self-Perception & Confidence"
+      },
+      "conversion_status": "ok",
+      "conversion_notes": [
+        "Adaptive trigger: triggered when student indicates high confidence in a domain/area."
+      ]
+    },
+    {
+      "id": "Q12",
+      "version": 1,
+      "layer": "adaptive",
+      "question_type": "follow_up_reflection",
+      "dimension": [
+        "self_perception_confidence"
+      ],
+      "signals": [
+        "SELF3",
+        "SELF2"
+      ],
+      "text": {
+        "en": "When you have hands-on experience in an engineering domain but still don't feel fully confident, which of these feels closest to why?",
+        "zh": null
+      },
+      "instruction": {
+        "en": null,
+        "zh": null
+      },
+      "options": [
+        {
+          "id": "A",
+          "text": {
+            "en": "I tend to compare myself with people who are much more experienced",
+            "zh": null
+          }
+        },
+        {
+          "id": "B",
+          "text": {
+            "en": "I can usually do it, but I still don't feel comfortable doing it",
+            "zh": null
+          }
+        },
+        {
+          "id": "C",
+          "text": {
+            "en": "I often need more help than others may realise",
+            "zh": null
+          }
+        },
+        {
+          "id": "D",
+          "text": {
+            "en": "A few difficult experiences affected my confidence",
+            "zh": null
+          }
+        },
+        {
+          "id": "E",
+          "text": {
+            "en": "I don't feel that my experience has been advanced enough yet",
+            "zh": null
+          }
+        },
+        {
+          "id": "F",
+          "text": {
+            "en": "I'm still not sure how capable I am in this area",
+            "zh": null
+          }
+        },
+        {
+          "id": "G",
+          "text": {
+            "en": "Something else",
+            "zh": null
+          }
+        }
+      ],
+      "allow_free_text": false,
+      "allow_multiple": false,
+      "max_selections": 1,
+      "applicability": {
+        "major": [
+          "all"
+        ],
+        "year": [
+          "all"
+        ],
+        "country": [
+          "all"
+        ]
+      },
+      "trigger": {
+        "all": [
+          {
+            "field": "self_confidence",
+            "operator": "eq",
+            "value": "low"
+          },
+          {
+            "field": "experience_signal",
+            "operator": "eq",
+            "value": "high"
+          }
+        ],
+        "any": [],
+        "none": []
+      },
+      "required": false,
+      "source_metadata": {
+        "original_id": "Q12",
+        "original_title": "Low Confidence Despite Experience",
+        "original_section": "B. Self-Perception & Confidence"
+      },
+      "conversion_status": "ok",
+      "conversion_notes": [
+        "Adaptive trigger: low confidence despite substantial experience (canonical example from specification)."
+      ]
+    },
+    {
+      "id": "Q13",
+      "version": 1,
+      "layer": "core",
+      "question_type": "micro_scenario",
+      "dimension": [
+        "problem_solving_judgement"
+      ],
+      "signals": [
+        "PS1"
+      ],
+      "text": {
+        "en": "You're given a problem you haven't seen before. What are you most likely to do first?",
+        "zh": null
+      },
+      "instruction": {
+        "en": null,
+        "zh": null
+      },
+      "options": [
+        {
+          "id": "A",
+          "text": {
+            "en": "Break it into smaller parts",
+            "zh": null
+          }
+        },
+        {
+          "id": "B",
+          "text": {
+            "en": "Search for a similar example",
+            "zh": null
+          }
+        },
+        {
+          "id": "C",
+          "text": {
+            "en": "Start experimenting",
+            "zh": null
+          }
+        },
+        {
+          "id": "D",
+          "text": {
+            "en": "Learn the underlying concepts first",
+            "zh": null
+          }
+        },
+        {
+          "id": "E",
+          "text": {
+            "en": "Ask someone to help me understand the problem",
+            "zh": null
+          }
+        },
+        {
+          "id": "F",
+          "text": {
+            "en": "I'm usually unsure where to begin",
+            "zh": null
+          }
+        }
+      ],
+      "allow_free_text": false,
+      "allow_multiple": false,
+      "max_selections": 1,
+      "applicability": {
+        "major": [
+          "all"
+        ],
+        "year": [
+          "all"
+        ],
+        "country": [
+          "all"
+        ]
+      },
+      "trigger": null,
+      "required": false,
+      "source_metadata": {
+        "original_id": "Q13",
+        "original_title": "First Approach to an Unfamiliar Problem",
+        "original_section": "C. Problem Solving & Judgement"
+      },
+      "conversion_status": "ok",
+      "conversion_notes": []
+    },
+    {
+      "id": "Q14",
+      "version": 1,
+      "layer": "core",
+      "question_type": "micro_scenario",
+      "dimension": [
+        "problem_solving_judgement"
+      ],
+      "signals": [
+        "PS2"
+      ],
+      "text": {
+        "en": "Something you built isn't working as expected. What are you most likely to do first?",
+        "zh": null
+      },
+      "instruction": {
+        "en": null,
+        "zh": null
+      },
+      "options": [
+        {
+          "id": "A",
+          "text": {
+            "en": "Check whether anything changed recently",
+            "zh": null
+          }
+        },
+        {
+          "id": "B",
+          "text": {
+            "en": "Try to reproduce the problem and observe what happens",
+            "zh": null
+          }
+        },
+        {
+          "id": "C",
+          "text": {
+            "en": "Search for similar problems or examples",
+            "zh": null
+          }
+        },
+        {
+          "id": "D",
+          "text": {
+            "en": "Test one possible cause at a time",
+            "zh": null
+          }
+        },
+        {
+          "id": "E",
+          "text": {
+            "en": "Ask someone else for another perspective",
+            "zh": null
+          }
+        },
+        {
+          "id": "F",
+          "text": {
+            "en": "Step away briefly and come back with a fresh look",
+            "zh": null
+          }
+        },
+        {
+          "id": "G",
+          "text": {
+            "en": "It depends on the problem",
+            "zh": null
+          }
+        }
+      ],
+      "allow_free_text": false,
+      "allow_multiple": false,
+      "max_selections": 1,
+      "applicability": {
+        "major": [
+          "all"
+        ],
+        "year": [
+          "all"
+        ],
+        "country": [
+          "all"
+        ]
+      },
+      "trigger": null,
+      "required": false,
+      "source_metadata": {
+        "original_id": "Q14",
+        "original_title": "Troubleshooting Behaviour",
+        "original_section": "C. Problem Solving & Judgement"
+      },
+      "conversion_status": "ok",
+      "conversion_notes": []
+    },
+    {
+      "id": "Q15",
+      "version": 1,
+      "layer": "contextual",
+      "question_type": "past_experience",
+      "dimension": [
+        "problem_solving_judgement"
+      ],
+      "signals": [
+        "PS2"
+      ],
+      "text": {
+        "en": "Think about the last time something in a project went wrong. How did you eventually figure it out?",
+        "zh": null
+      },
+      "instruction": {
+        "en": null,
+        "zh": null
+      },
+      "options": [
+        {
+          "id": "A",
+          "text": {
+            "en": "Someone showed me the solution",
+            "zh": null
+          }
+        },
+        {
+          "id": "B",
+          "text": {
+            "en": "I found an example and adapted it",
+            "zh": null
+          }
+        },
+        {
+          "id": "C",
+          "text": {
+            "en": "I tried several things until something worked",
+            "zh": null
+          }
+        },
+        {
+          "id": "D",
+          "text": {
+            "en": "I isolated the problem step by step",
+            "zh": null
+          }
+        },
+        {
+          "id": "E",
+          "text": {
+            "en": "I changed the overall approach",
+            "zh": null
+          }
+        },
+        {
+          "id": "F",
+          "text": {
+            "en": "I don't remember a situation like this",
+            "zh": null
+          }
+        }
+      ],
+      "allow_free_text": false,
+      "allow_multiple": false,
+      "max_selections": 1,
+      "applicability": {
+        "major": [
+          "all"
+        ],
+        "year": [
+          "all"
+        ],
+        "country": [
+          "all"
+        ]
+      },
+      "trigger": null,
+      "required": false,
+      "source_metadata": {
+        "original_id": "Q15",
+        "original_title": "Past Troubleshooting Experience",
+        "original_section": "C. Problem Solving & Judgement"
+      },
+      "conversion_status": "ok",
+      "conversion_notes": []
+    },
+    {
+      "id": "Q16",
+      "version": 1,
+      "layer": "contextual",
+      "question_type": "micro_scenario",
+      "dimension": [
+        "problem_solving_judgement"
+      ],
+      "signals": [
+        "PS1"
+      ],
+      "text": {
+        "en": "You're given a problem with a lot of information, but you're not sure which parts actually matter. What are you most likely to do first?",
+        "zh": null
+      },
+      "instruction": {
+        "en": null,
+        "zh": null
+      },
+      "options": [
+        {
+          "id": "A",
+          "text": {
+            "en": "Identify the main goal or question",
+            "zh": null
+          }
+        },
+        {
+          "id": "B",
+          "text": {
+            "en": "Organise the information into smaller groups",
+            "zh": null
+          }
+        },
+        {
+          "id": "C",
+          "text": {
+            "en": "Look for examples of similar problems",
+            "zh": null
+          }
+        },
+        {
+          "id": "D",
+          "text": {
+            "en": "Start working with the information and see what becomes important",
+            "zh": null
+          }
+        },
+        {
+          "id": "E",
+          "text": {
+            "en": "Ask someone which parts deserve the most attention",
+            "zh": null
+          }
+        },
+        {
+          "id": "F",
+          "text": {
+            "en": "Discuss different interpretations with others",
+            "zh": null
+          }
+        },
+        {
+          "id": "G",
+          "text": {
+            "en": "It depends on the situation",
+            "zh": null
+          }
+        }
+      ],
+      "allow_free_text": false,
+      "allow_multiple": false,
+      "max_selections": 1,
+      "applicability": {
+        "major": [
+          "all"
+        ],
+        "year": [
+          "all"
+        ],
+        "country": [
+          "all"
+        ]
+      },
+      "trigger": null,
+      "required": false,
+      "source_metadata": {
+        "original_id": "Q16",
+        "original_title": "Finding the Core of a Complex Problem",
+        "original_section": "C. Problem Solving & Judgement"
+      },
+      "conversion_status": "ok",
+      "conversion_notes": []
+    },
+    {
+      "id": "Q17",
+      "version": 1,
+      "layer": "contextual",
+      "question_type": "micro_scenario",
+      "dimension": [
+        "problem_solving_judgement",
+        "self_management"
+      ],
+      "signals": [
+        "PS1",
+        "MGMT1"
+      ],
+      "text": {
+        "en": "You have limited time and several reasonable ways to approach a problem. What would most influence which one you try first?",
+        "zh": null
+      },
+      "instruction": {
+        "en": null,
+        "zh": null
+      },
+      "options": [
+        {
+          "id": "A",
+          "text": {
+            "en": "How simple it is to implement",
+            "zh": null
+          }
+        },
+        {
+          "id": "B",
+          "text": {
+            "en": "How familiar I am with the approach",
+            "zh": null
+          }
+        },
+        {
+          "id": "C",
+          "text": {
+            "en": "How interesting it is to explore",
+            "zh": null
+          }
+        },
+        {
+          "id": "D",
+          "text": {
+            "en": "How well it fits what the project needs",
+            "zh": null
+          }
+        },
+        {
+          "id": "E",
+          "text": {
+            "en": "How easily I can test whether it works",
+            "zh": null
+          }
+        },
+        {
+          "id": "F",
+          "text": {
+            "en": "How much I can learn from trying it",
+            "zh": null
+          }
+        },
+        {
+          "id": "G",
+          "text": {
+            "en": "I would probably compare a few options before deciding",
+            "zh": null
+          }
+        }
+      ],
+      "allow_free_text": false,
+      "allow_multiple": false,
+      "max_selections": 1,
+      "applicability": {
+        "major": [
+          "all"
+        ],
+        "year": [
+          "all"
+        ],
+        "country": [
+          "all"
+        ]
+      },
+      "trigger": null,
+      "required": false,
+      "source_metadata": {
+        "original_id": "Q17",
+        "original_title": "Choosing an Approach Under Time Pressure",
+        "original_section": "C. Problem Solving & Judgement"
+      },
+      "conversion_status": "ok",
+      "conversion_notes": []
+    },
+    {
+      "id": "Q18",
+      "version": 1,
+      "layer": "contextual",
+      "question_type": "past_experience",
+      "dimension": [
+        "problem_solving_judgement"
+      ],
+      "signals": [
+        "PS2"
+      ],
+      "text": {
+        "en": "When you think about the troubleshooting you've done, which kind of situation have you handled most often?",
+        "zh": null
+      },
+      "instruction": {
+        "en": null,
+        "zh": null
+      },
+      "options": [
+        {
+          "id": "A",
+          "text": {
+            "en": "Finding mistakes in my own work",
+            "zh": null
+          }
+        },
+        {
+          "id": "B",
+          "text": {
+            "en": "Understanding why an existing solution behaves unexpectedly",
+            "zh": null
+          }
+        },
+        {
+          "id": "C",
+          "text": {
+            "en": "Adapting a solution I've seen before",
+            "zh": null
+          }
+        },
+        {
+          "id": "D",
+          "text": {
+            "en": "Comparing several possible causes of a problem",
+            "zh": null
+          }
+        },
+        {
+          "id": "E",
+          "text": {
+            "en": "Testing different fixes to see what changes",
+            "zh": null
+          }
+        },
+        {
+          "id": "F",
+          "text": {
+            "en": "Helping someone else think through a problem",
+            "zh": null
+          }
+        },
+        {
+          "id": "G",
+          "text": {
+            "en": "I haven't had many opportunities to troubleshoot yet",
+            "zh": null
+          }
+        }
+      ],
+      "allow_free_text": false,
+      "allow_multiple": false,
+      "max_selections": 1,
+      "applicability": {
+        "major": [
+          "all"
+        ],
+        "year": [
+          "all"
+        ],
+        "country": [
+          "all"
+        ]
+      },
+      "trigger": null,
+      "required": false,
+      "source_metadata": {
+        "original_id": "Q18",
+        "original_title": "Troubleshooting Experience",
+        "original_section": "C. Problem Solving & Judgement"
+      },
+      "conversion_status": "ok",
+      "conversion_notes": []
+    },
+    {
+      "id": "Q19",
+      "version": 1,
+      "layer": "adaptive",
+      "question_type": "follow_up_reflection",
+      "dimension": [
+        "problem_solving_judgement",
+        "self_perception_confidence"
+      ],
+      "signals": [
+        "PS1",
+        "SELF3"
+      ],
+      "text": {
+        "en": "You've successfully worked through several difficult problems. Does the difficulty come more from finding the answer, or from feeling unsure while you're finding it?",
+        "zh": null
+      },
+      "instruction": {
+        "en": null,
+        "zh": null
+      },
+      "options": [
+        {
+          "id": "A",
+          "text": {
+            "en": "Finding the answer itself",
+            "zh": null
+          }
+        },
+        {
+          "id": "B",
+          "text": {
+            "en": "Knowing where to start",
+            "zh": null
+          }
+        },
+        {
+          "id": "C",
+          "text": {
+            "en": "Not knowing whether my approach is correct",
+            "zh": null
+          }
+        },
+        {
+          "id": "D",
+          "text": {
+            "en": "I usually solve it eventually but don't feel confident",
+            "zh": null
+          }
+        },
+        {
+          "id": "E",
+          "text": {
+            "en": "Something else",
+            "zh": null
+          }
+        }
+      ],
+      "allow_free_text": false,
+      "allow_multiple": false,
+      "max_selections": 1,
+      "applicability": {
+        "major": [
+          "all"
+        ],
+        "year": [
+          "all"
+        ],
+        "country": [
+          "all"
+        ]
+      },
+      "trigger": {
+        "all": [
+          {
+            "field": "problem_solving_experience",
+            "operator": "eq",
+            "value": "high"
+          },
+          {
+            "field": "problem_solving_confidence",
+            "operator": "eq",
+            "value": "low"
+          }
+        ],
+        "any": [],
+        "none": []
+      },
+      "required": false,
+      "source_metadata": {
+        "original_id": "Q19",
+        "original_title": "Capability vs Confidence",
+        "original_section": "C. Problem Solving & Judgement"
+      },
+      "conversion_status": "ok",
+      "conversion_notes": [
+        "Adaptive trigger: discrepancy between successful problem-solving experience and subjective confidence."
+      ]
+    },
+    {
+      "id": "Q20",
+      "version": 1,
+      "layer": "core",
+      "question_type": "micro_scenario",
+      "dimension": [
+        "learning_adaptability"
+      ],
+      "signals": [
+        "LEARN1"
+      ],
+      "text": {
+        "en": "When a project requires something you haven't learned before, what do you usually try first?",
+        "zh": null
+      },
+      "instruction": {
+        "en": null,
+        "zh": null
+      },
+      "options": [
+        {
+          "id": "A",
+          "text": {
+            "en": "Find a tutorial or worked example",
+            "zh": null
+          }
+        },
+        {
+          "id": "B",
+          "text": {
+            "en": "Read about the underlying concept first",
+            "zh": null
+          }
+        },
+        {
+          "id": "C",
+          "text": {
+            "en": "Look at official documentation or reference material",
+            "zh": null
+          }
+        },
+        {
+          "id": "D",
+          "text": {
+            "en": "Ask someone who has experience with it",
+            "zh": null
+          }
+        },
+        {
+          "id": "E",
+          "text": {
+            "en": "Try using it directly and learn from what happens",
+            "zh": null
+          }
+        },
+        {
+          "id": "F",
+          "text": {
+            "en": "Compare a few different resources before deciding how to proceed",
+            "zh": null
+          }
+        },
+        {
+          "id": "G",
+          "text": {
+            "en": "It depends on what I need to learn",
+            "zh": null
+          }
+        }
+      ],
+      "allow_free_text": false,
+      "allow_multiple": false,
+      "max_selections": 1,
+      "applicability": {
+        "major": [
+          "all"
+        ],
+        "year": [
+          "all"
+        ],
+        "country": [
+          "all"
+        ]
+      },
+      "trigger": null,
+      "required": false,
+      "source_metadata": {
+        "original_id": "Q20",
+        "original_title": "Learning Something New",
+        "original_section": "D. Learning & Adaptability"
+      },
+      "conversion_status": "ok",
+      "conversion_notes": []
+    },
+    {
+      "id": "Q21",
+      "version": 1,
+      "layer": "core",
+      "question_type": "micro_scenario",
+      "dimension": [
+        "learning_adaptability"
+      ],
+      "signals": [
+        "LEARN2"
+      ],
+      "text": {
+        "en": "If your first approach clearly isn't working, what are you most likely to do?",
+        "zh": null
+      },
+      "instruction": {
+        "en": null,
+        "zh": null
+      },
+      "options": [
+        {
+          "id": "A",
+          "text": {
+            "en": "Keep trying because I may just need more time",
+            "zh": null
+          }
+        },
+        {
+          "id": "B",
+          "text": {
+            "en": "Look for a different implementation",
+            "zh": null
+          }
+        },
+        {
+          "id": "C",
+          "text": {
+            "en": "Ask someone whether I should change direction",
+            "zh": null
+          }
+        },
+        {
+          "id": "D",
+          "text": {
+            "en": "Step back and reconsider my assumptions",
+            "zh": null
+          }
+        },
+        {
+          "id": "E",
+          "text": {
+            "en": "Try a completely different approach",
+            "zh": null
+          }
+        },
+        {
+          "id": "F",
+          "text": {
+            "en": "It depends how close the deadline is",
+            "zh": null
+          }
+        }
+      ],
+      "allow_free_text": false,
+      "allow_multiple": false,
+      "max_selections": 1,
+      "applicability": {
+        "major": [
+          "all"
+        ],
+        "year": [
+          "all"
+        ],
+        "country": [
+          "all"
+        ]
+      },
+      "trigger": null,
+      "required": false,
+      "source_metadata": {
+        "original_id": "Q21",
+        "original_title": "Changing an Unsuccessful Approach",
+        "original_section": "D. Learning & Adaptability"
+      },
+      "conversion_status": "ok",
+      "conversion_notes": []
+    },
+    {
+      "id": "Q22",
+      "version": 1,
+      "layer": "contextual",
+      "question_type": "past_experience",
+      "dimension": [
+        "learning_adaptability"
+      ],
+      "signals": [
+        "LEARN1"
+      ],
+      "text": {
+        "en": "Think about the last useful thing you taught yourself because you needed it. What kind of thing was it?",
+        "zh": null
+      },
+      "instruction": {
+        "en": "Optional: If you'd like, tell us briefly what you learned.",
+        "zh": null
+      },
+      "options": [
+        {
+          "id": "A",
+          "text": {
+            "en": "A programming language or software tool",
+            "zh": null
+          }
+        },
+        {
+          "id": "B",
+          "text": {
+            "en": "An engineering or technical concept",
+            "zh": null
+          }
+        },
+        {
+          "id": "C",
+          "text": {
+            "en": "A design, modelling, or analysis tool",
+            "zh": null
+          }
+        },
+        {
+          "id": "D",
+          "text": {
+            "en": "A research or data skill",
+            "zh": null
+          }
+        },
+        {
+          "id": "E",
+          "text": {
+            "en": "A communication or presentation skill",
+            "zh": null
+          }
+        },
+        {
+          "id": "F",
+          "text": {
+            "en": "A project or organisational skill",
+            "zh": null
+          }
+        },
+        {
+          "id": "G",
+          "text": {
+            "en": "Something else",
+            "zh": null
+          }
+        },
+        {
+          "id": "H",
+          "text": {
+            "en": "Nothing comes to mind yet",
+            "zh": null
+          }
+        }
+      ],
+      "allow_free_text": true,
+      "allow_multiple": false,
+      "max_selections": 1,
+      "applicability": {
+        "major": [
+          "all"
+        ],
+        "year": [
+          "all"
+        ],
+        "country": [
+          "all"
+        ]
+      },
+      "trigger": null,
+      "required": false,
+      "source_metadata": {
+        "original_id": "Q22",
+        "original_title": "Self-Directed Learning Experience",
+        "original_section": "D. Learning & Adaptability"
+      },
+      "conversion_status": "ok",
+      "conversion_notes": [
+        "Supports optional free-text reflection for what the student learned."
+      ]
+    },
+    {
+      "id": "Q23",
+      "version": 1,
+      "layer": "contextual",
+      "question_type": "micro_scenario",
+      "dimension": [
+        "learning_adaptability"
+      ],
+      "signals": [
+        "LEARN1",
+        "LEARN2"
+      ],
+      "text": {
+        "en": "You're trying to learn something new, but the resource you're using isn't making sense. What do you usually try next?",
+        "zh": null
+      },
+      "instruction": {
+        "en": null,
+        "zh": null
+      },
+      "options": [
+        {
+          "id": "A",
+          "text": {
+            "en": "Find another explanation of the same topic",
+            "zh": null
+          }
+        },
+        {
+          "id": "B",
+          "text": {
+            "en": "Look for a practical example",
+            "zh": null
+          }
+        },
+        {
+          "id": "C",
+          "text": {
+            "en": "Try using it and learn through experimentation",
+            "zh": null
+          }
+        },
+        {
+          "id": "D",
+          "text": {
+            "en": "Ask someone to explain the confusing part",
+            "zh": null
+          }
+        },
+        {
+          "id": "E",
+          "text": {
+            "en": "Go back and review the prerequisite knowledge",
+            "zh": null
+          }
+        },
+        {
+          "id": "F",
+          "text": {
+            "en": "Stay with the same resource a little longer",
+            "zh": null
+          }
+        },
+        {
+          "id": "G",
+          "text": {
+            "en": "It depends on what I'm learning",
+            "zh": null
+          }
+        }
+      ],
+      "allow_free_text": false,
+      "allow_multiple": false,
+      "max_selections": 1,
+      "applicability": {
+        "major": [
+          "all"
+        ],
+        "year": [
+          "all"
+        ],
+        "country": [
+          "all"
+        ]
+      },
+      "trigger": null,
+      "required": false,
+      "source_metadata": {
+        "original_id": "Q23",
+        "original_title": "When a Learning Resource Doesn't Work",
+        "original_section": "D. Learning & Adaptability"
+      },
+      "conversion_status": "ok",
+      "conversion_notes": []
+    },
+    {
+      "id": "Q24",
+      "version": 1,
+      "layer": "contextual",
+      "question_type": "past_experience",
+      "dimension": [
+        "learning_adaptability"
+      ],
+      "signals": [
+        "LEARN2"
+      ],
+      "text": {
+        "en": "Think of a time feedback changed how you approached something. What happened next?",
+        "zh": null
+      },
+      "instruction": {
+        "en": null,
+        "zh": null
+      },
+      "options": [
+        {
+          "id": "A",
+          "text": {
+            "en": "I made the specific change requested",
+            "zh": null
+          }
+        },
+        {
+          "id": "B",
+          "text": {
+            "en": "I changed several related parts too",
+            "zh": null
+          }
+        },
+        {
+          "id": "C",
+          "text": {
+            "en": "I reconsidered the overall approach",
+            "zh": null
+          }
+        },
+        {
+          "id": "D",
+          "text": {
+            "en": "I disagreed with the feedback and kept my approach",
+            "zh": null
+          }
+        },
+        {
+          "id": "E",
+          "text": {
+            "en": "I can't think of a situation like this",
+            "zh": null
+          }
+        }
+      ],
+      "allow_free_text": false,
+      "allow_multiple": false,
+      "max_selections": 1,
+      "applicability": {
+        "major": [
+          "all"
+        ],
+        "year": [
+          "all"
+        ],
+        "country": [
+          "all"
+        ]
+      },
+      "trigger": null,
+      "required": false,
+      "source_metadata": {
+        "original_id": "Q24",
+        "original_title": "Responding to Feedback",
+        "original_section": "D. Learning & Adaptability"
+      },
+      "conversion_status": "ok",
+      "conversion_notes": []
+    },
+    {
+      "id": "Q25",
+      "version": 1,
+      "layer": "contextual",
+      "question_type": "self_reflection",
+      "dimension": [
+        "learning_adaptability"
+      ],
+      "signals": [
+        "LEARN1"
+      ],
+      "text": {
+        "en": "Which signs make you feel that you understand something well enough to move on?",
+        "zh": null
+      },
+      "instruction": {
+        "en": "Choose up to 2.",
+        "zh": null
+      },
+      "options": [
+        {
+          "id": "A",
+          "text": {
+            "en": "I can complete the task I needed it for",
+            "zh": null
+          }
+        },
+        {
+          "id": "B",
+          "text": {
+            "en": "I can explain the main idea in my own words",
+            "zh": null
+          }
+        },
+        {
+          "id": "C",
+          "text": {
+            "en": "I know where to look if I get stuck again",
+            "zh": null
+          }
+        },
+        {
+          "id": "D",
+          "text": {
+            "en": "I can use it without constantly following an example",
+            "zh": null
+          }
+        },
+        {
+          "id": "E",
+          "text": {
+            "en": "I can use it in a slightly different situation",
+            "zh": null
+          }
+        },
+        {
+          "id": "F",
+          "text": {
+            "en": "Feedback from someone else suggests I'm on the right track",
+            "zh": null
+          }
+        },
+        {
+          "id": "G",
+          "text": {
+            "en": "It depends on what I'm learning",
+            "zh": null
+          }
+        }
+      ],
+      "allow_free_text": false,
+      "allow_multiple": true,
+      "max_selections": 2,
+      "applicability": {
+        "major": [
+          "all"
+        ],
+        "year": [
+          "all"
+        ],
+        "country": [
+          "all"
+        ]
+      },
+      "trigger": null,
+      "required": false,
+      "source_metadata": {
+        "original_id": "Q25",
+        "original_title": "Knowing When You Understand Something",
+        "original_section": "D. Learning & Adaptability"
+      },
+      "conversion_status": "ok",
+      "conversion_notes": []
+    },
+    {
+      "id": "Q26",
+      "version": 1,
+      "layer": "adaptive",
+      "question_type": "follow_up_reflection",
+      "dimension": [
+        "learning_adaptability"
+      ],
+      "signals": [
+        "LEARN2"
+      ],
+      "text": {
+        "en": "Sometimes we stay with an approach even when progress is slow. When that happens for you, what is usually the main reason?",
+        "zh": null
+      },
+      "instruction": {
+        "en": null,
+        "zh": null
+      },
+      "options": [
+        {
+          "id": "A",
+          "text": {
+            "en": "I still think the approach can work",
+            "zh": null
+          }
+        },
+        {
+          "id": "B",
+          "text": {
+            "en": "I've already invested a lot of time in it",
+            "zh": null
+          }
+        },
+        {
+          "id": "C",
+          "text": {
+            "en": "I'm not sure what a better alternative would be",
+            "zh": null
+          }
+        },
+        {
+          "id": "D",
+          "text": {
+            "en": "Changing direction feels risky",
+            "zh": null
+          }
+        },
+        {
+          "id": "E",
+          "text": {
+            "en": "There isn't enough time to start again",
+            "zh": null
+          }
+        },
+        {
+          "id": "F",
+          "text": {
+            "en": "I want to understand why it isn't working before changing it",
+            "zh": null
+          }
+        },
+        {
+          "id": "G",
+          "text": {
+            "en": "Something else",
+            "zh": null
+          }
+        }
+      ],
+      "allow_free_text": false,
+      "allow_multiple": false,
+      "max_selections": 1,
+      "applicability": {
+        "major": [
+          "all"
+        ],
+        "year": [
+          "all"
+        ],
+        "country": [
+          "all"
+        ]
+      },
+      "trigger": {
+        "all": [
+          {
+            "field": "persistence_signal",
+            "operator": "eq",
+            "value": "high"
+          }
+        ],
+        "any": [],
+        "none": []
+      },
+      "required": false,
+      "source_metadata": {
+        "original_id": "Q26",
+        "original_title": "Staying With an Approach",
+        "original_section": "D. Learning & Adaptability"
+      },
+      "conversion_status": "ok",
+      "conversion_notes": [
+        "Adaptive trigger: triggered when student shows persistent attachment to an approach."
+      ]
+    },
+    {
+      "id": "Q27",
+      "version": 1,
+      "layer": "core",
+      "question_type": "behavioural_anchor",
+      "dimension": [
+        "execution_ownership"
+      ],
+      "signals": [
+        "EXEC1"
+      ],
+      "text": {
+        "en": "For the project or piece of work you're most proud of, how much guidance did you need?",
+        "zh": null
+      },
+      "instruction": {
+        "en": null,
+        "zh": null
+      },
+      "options": [
+        {
+          "id": "A",
+          "text": {
+            "en": "I followed detailed instructions",
+            "zh": null
+          }
+        },
+        {
+          "id": "B",
+          "text": {
+            "en": "I adapted examples or existing work",
+            "zh": null
+          }
+        },
+        {
+          "id": "C",
+          "text": {
+            "en": "I completed most of my part independently",
+            "zh": null
+          }
+        },
+        {
+          "id": "D",
+          "text": {
+            "en": "I decided how to approach most of it myself",
+            "zh": null
+          }
+        },
+        {
+          "id": "E",
+          "text": {
+            "en": "The amount of guidance changed depending on the part of the project",
+            "zh": null
+          }
+        },
+        {
+          "id": "F",
+          "text": {
+            "en": "I haven't had a suitable opportunity to demonstrate this yet",
+            "zh": null
+          }
+        }
+      ],
+      "allow_free_text": false,
+      "allow_multiple": false,
+      "max_selections": 1,
+      "applicability": {
+        "major": [
+          "all"
+        ],
+        "year": [
+          "all"
+        ],
+        "country": [
+          "all"
+        ]
+      },
+      "trigger": null,
+      "required": false,
+      "source_metadata": {
+        "original_id": "Q27",
+        "original_title": "Independence",
+        "original_section": "E. Execution & Ownership"
+      },
+      "conversion_status": "ok",
+      "conversion_notes": []
+    },
+    {
+      "id": "Q28",
+      "version": 1,
+      "layer": "core",
+      "question_type": "behavioural_anchor",
+      "dimension": [
+        "execution_ownership"
+      ],
+      "signals": [
+        "EXEC2"
+      ],
+      "text": {
+        "en": "Think about the last time you noticed something important that wasn't clearly assigned to anyone. What did you do?",
+        "zh": null
+      },
+      "instruction": {
+        "en": null,
+        "zh": null
+      },
+      "options": [
+        {
+          "id": "A",
+          "text": {
+            "en": "I waited until responsibilities became clearer",
+            "zh": null
+          }
+        },
+        {
+          "id": "B",
+          "text": {
+            "en": "I pointed it out to the group",
+            "zh": null
+          }
+        },
+        {
+          "id": "C",
+          "text": {
+            "en": "I asked whether someone should take responsibility for it",
+            "zh": null
+          }
+        },
+        {
+          "id": "D",
+          "text": {
+            "en": "I offered to take responsibility for it",
+            "zh": null
+          }
+        },
+        {
+          "id": "E",
+          "text": {
+            "en": "I started working on it because it seemed necessary",
+            "zh": null
+          }
+        },
+        {
+          "id": "F",
+          "text": {
+            "en": "We discussed it and decided together who should handle it",
+            "zh": null
+          }
+        },
+        {
+          "id": "G",
+          "text": {
+            "en": "I can't think of a situation like this",
+            "zh": null
+          }
+        }
+      ],
+      "allow_free_text": false,
+      "allow_multiple": false,
+      "max_selections": 1,
+      "applicability": {
+        "major": [
+          "all"
+        ],
+        "year": [
+          "all"
+        ],
+        "country": [
+          "all"
+        ]
+      },
+      "trigger": null,
+      "required": false,
+      "source_metadata": {
+        "original_id": "Q28",
+        "original_title": "Initiative / Ownership",
+        "original_section": "E. Execution & Ownership"
+      },
+      "conversion_status": "ok",
+      "conversion_notes": []
+    },
+    {
+      "id": "Q29",
+      "version": 1,
+      "layer": "contextual",
+      "question_type": "past_experience",
+      "dimension": [
+        "execution_ownership",
+        "collaboration_communication"
+      ],
+      "signals": [
+        "EXEC2",
+        "COM2"
+      ],
+      "text": {
+        "en": "In your most recent team project, where did you contribute most?",
+        "zh": null
+      },
+      "instruction": {
+        "en": "Choose up to 2.",
+        "zh": null
+      },
+      "options": [
+        {
+          "id": "A",
+          "text": {
+            "en": "Building or completing technical/task work",
+            "zh": null
+          }
+        },
+        {
+          "id": "B",
+          "text": {
+            "en": "Researching or analysing information",
+            "zh": null
+          }
+        },
+        {
+          "id": "C",
+          "text": {
+            "en": "Generating ideas or designing the approach",
+            "zh": null
+          }
+        },
+        {
+          "id": "D",
+          "text": {
+            "en": "Planning tasks or keeping track of progress",
+            "zh": null
+          }
+        },
+        {
+          "id": "E",
+          "text": {
+            "en": "Connecting different parts of the project",
+            "zh": null
+          }
+        },
+        {
+          "id": "F",
+          "text": {
+            "en": "Checking or improving the quality of the work",
+            "zh": null
+          }
+        },
+        {
+          "id": "G",
+          "text": {
+            "en": "Explaining, documenting, or presenting the result",
+            "zh": null
+          }
+        },
+        {
+          "id": "H",
+          "text": {
+            "en": "Supporting teammates when they needed help",
+            "zh": null
+          }
+        },
+        {
+          "id": "I",
+          "text": {
+            "en": "I haven't done a significant team project yet",
+            "zh": null
+          }
+        }
+      ],
+      "allow_free_text": false,
+      "allow_multiple": true,
+      "max_selections": 2,
+      "applicability": {
+        "major": [
+          "all"
+        ],
+        "year": [
+          "all"
+        ],
+        "country": [
+          "all"
+        ]
+      },
+      "trigger": null,
+      "required": false,
+      "source_metadata": {
+        "original_id": "Q29",
+        "original_title": "Contribution in a Team Project",
+        "original_section": "E. Execution & Ownership"
+      },
+      "conversion_status": "ok",
+      "conversion_notes": []
+    },
+    {
+      "id": "Q30",
+      "version": 1,
+      "layer": "contextual",
+      "question_type": "micro_scenario",
+      "dimension": [
+        "execution_ownership"
+      ],
+      "signals": [
+        "EXEC2"
+      ],
+      "text": {
+        "en": "You've completed the main requirements of your task and still have some time left. What are you most likely to do?",
+        "zh": null
+      },
+      "instruction": {
+        "en": null,
+        "zh": null
+      },
+      "options": [
+        {
+          "id": "A",
+          "text": {
+            "en": "Improve the quality of what I've already completed",
+            "zh": null
+          }
+        },
+        {
+          "id": "B",
+          "text": {
+            "en": "Explore an additional feature or idea",
+            "zh": null
+          }
+        },
+        {
+          "id": "C",
+          "text": {
+            "en": "Check whether anything important was missed",
+            "zh": null
+          }
+        },
+        {
+          "id": "D",
+          "text": {
+            "en": "Ask what the next priority should be",
+            "zh": null
+          }
+        },
+        {
+          "id": "E",
+          "text": {
+            "en": "Use the time on another responsibility",
+            "zh": null
+          }
+        },
+        {
+          "id": "F",
+          "text": {
+            "en": "Finish early and leave it as it is",
+            "zh": null
+          }
+        },
+        {
+          "id": "G",
+          "text": {
+            "en": "It depends on the project",
+            "zh": null
+          }
+        }
+      ],
+      "allow_free_text": false,
+      "allow_multiple": false,
+      "max_selections": 1,
+      "applicability": {
+        "major": [
+          "all"
+        ],
+        "year": [
+          "all"
+        ],
+        "country": [
+          "all"
+        ]
+      },
+      "trigger": null,
+      "required": false,
+      "source_metadata": {
+        "original_id": "Q30",
+        "original_title": "Extra Capacity",
+        "original_section": "E. Execution & Ownership"
+      },
+      "conversion_status": "ok",
+      "conversion_notes": []
+    },
+    {
+      "id": "Q31",
+      "version": 1,
+      "layer": "contextual",
+      "question_type": "micro_scenario",
+      "dimension": [
+        "execution_ownership"
+      ],
+      "signals": [
+        "EXEC1"
+      ],
+      "text": {
+        "en": "When instructions are incomplete, what most influences whether you decide what to do next yourself or ask for clarification?",
+        "zh": null
+      },
+      "instruction": {
+        "en": null,
+        "zh": null
+      },
+      "options": [
+        {
+          "id": "A",
+          "text": {
+            "en": "How important the decision is",
+            "zh": null
+          }
+        },
+        {
+          "id": "B",
+          "text": {
+            "en": "How reversible the decision is",
+            "zh": null
+          }
+        },
+        {
+          "id": "C",
+          "text": {
+            "en": "How familiar I am with the situation",
+            "zh": null
+          }
+        },
+        {
+          "id": "D",
+          "text": {
+            "en": "How much the decision could affect other people",
+            "zh": null
+          }
+        },
+        {
+          "id": "E",
+          "text": {
+            "en": "How much time is available",
+            "zh": null
+          }
+        },
+        {
+          "id": "F",
+          "text": {
+            "en": "Whether the expected outcome is clear",
+            "zh": null
+          }
+        },
+        {
+          "id": "G",
+          "text": {
+            "en": "It depends on the situation",
+            "zh": null
+          }
+        }
+      ],
+      "allow_free_text": false,
+      "allow_multiple": false,
+      "max_selections": 1,
+      "applicability": {
+        "major": [
+          "all"
+        ],
+        "year": [
+          "all"
+        ],
+        "country": [
+          "all"
+        ]
+      },
+      "trigger": null,
+      "required": false,
+      "source_metadata": {
+        "original_id": "Q31",
+        "original_title": "Acting With Incomplete Instructions",
+        "original_section": "E. Execution & Ownership"
+      },
+      "conversion_status": "ok",
+      "conversion_notes": []
+    },
+    {
+      "id": "Q32",
+      "version": 1,
+      "layer": "contextual",
+      "question_type": "micro_scenario",
+      "dimension": [
+        "execution_ownership",
+        "collaboration_communication"
+      ],
+      "signals": [
+        "EXEC1",
+        "COM2"
+      ],
+      "text": {
+        "en": "A decision about your part of a project could affect someone else's work. What would most influence whether you decide independently or discuss it first?",
+        "zh": null
+      },
+      "instruction": {
+        "en": null,
+        "zh": null
+      },
+      "options": [
+        {
+          "id": "A",
+          "text": {
+            "en": "How much the decision could affect their work",
+            "zh": null
+          }
+        },
+        {
+          "id": "B",
+          "text": {
+            "en": "How urgent the decision is",
+            "zh": null
+          }
+        },
+        {
+          "id": "C",
+          "text": {
+            "en": "Whether the decision can easily be changed later",
+            "zh": null
+          }
+        },
+        {
+          "id": "D",
+          "text": {
+            "en": "Whether we already have an agreed way of handling it",
+            "zh": null
+          }
+        },
+        {
+          "id": "E",
+          "text": {
+            "en": "Whether I have enough information to decide confidently",
+            "zh": null
+          }
+        },
+        {
+          "id": "F",
+          "text": {
+            "en": "Whether I can test a small version before committing",
+            "zh": null
+          }
+        },
+        {
+          "id": "G",
+          "text": {
+            "en": "It depends on the situation",
+            "zh": null
+          }
+        }
+      ],
+      "allow_free_text": false,
+      "allow_multiple": false,
+      "max_selections": 1,
+      "applicability": {
+        "major": [
+          "all"
+        ],
+        "year": [
+          "all"
+        ],
+        "country": [
+          "all"
+        ]
+      },
+      "trigger": null,
+      "required": false,
+      "source_metadata": {
+        "original_id": "Q32",
+        "original_title": "Decisions That Affect Other People's Work",
+        "original_section": "E. Execution & Ownership"
+      },
+      "conversion_status": "ok",
+      "conversion_notes": []
+    },
+    {
+      "id": "Q33",
+      "version": 1,
+      "layer": "adaptive",
+      "question_type": "follow_up_reflection",
+      "dimension": [
+        "execution_ownership",
+        "self_perception_confidence"
+      ],
+      "signals": [
+        "EXEC2",
+        "SELF1"
+      ],
+      "text": {
+        "en": "You mentioned that taking the lead doesn't feel like a strength for you, but you've also described situations where you took responsibility for getting things done. How do those two ideas feel to you?",
+        "zh": null
+      },
+      "instruction": {
+        "en": null,
+        "zh": null
+      },
+      "options": [
+        {
+          "id": "A",
+          "text": {
+            "en": "Taking responsibility feels different from leading people",
+            "zh": null
+          }
+        },
+        {
+          "id": "B",
+          "text": {
+            "en": "I can take ownership of my work, but I don't usually want to direct others",
+            "zh": null
+          }
+        },
+        {
+          "id": "C",
+          "text": {
+            "en": "I sometimes take the lead without thinking of it as leadership",
+            "zh": null
+          }
+        },
+        {
+          "id": "D",
+          "text": {
+            "en": "They feel mostly the same to me",
+            "zh": null
+          }
+        },
+        {
+          "id": "E",
+          "text": {
+            "en": "I'm not sure — I haven't really thought about the difference",
+            "zh": null
+          }
+        }
+      ],
+      "allow_free_text": false,
+      "allow_multiple": false,
+      "max_selections": 1,
+      "applicability": {
+        "major": [
+          "all"
+        ],
+        "year": [
+          "all"
+        ],
+        "country": [
+          "all"
+        ]
+      },
+      "trigger": {
+        "all": [
+          {
+            "field": "perceived_strength_leadership",
+            "operator": "eq",
+            "value": "low"
+          },
+          {
+            "field": "execution_ownership_signal",
+            "operator": "eq",
+            "value": "high"
+          }
+        ],
+        "any": [],
+        "none": []
+      },
+      "required": false,
+      "source_metadata": {
+        "original_id": "Q33",
+        "original_title": "Ownership vs Leadership",
+        "original_section": "E. Execution & Ownership"
+      },
+      "conversion_status": "ok",
+      "conversion_notes": [
+        "Adaptive trigger: low self-identified leadership combined with high demonstrated ownership."
+      ]
+    },
+    {
+      "id": "Q34",
+      "version": 1,
+      "layer": "core",
+      "question_type": "micro_scenario",
+      "dimension": [
+        "collaboration_communication"
+      ],
+      "signals": [
+        "COM1"
+      ],
+      "text": {
+        "en": "When someone doesn't understand an idea you're explaining, what are you most likely to try next?",
+        "zh": null
+      },
+      "instruction": {
+        "en": null,
+        "zh": null
+      },
+      "options": [
+        {
+          "id": "A",
+          "text": {
+            "en": "Explain it using different words",
+            "zh": null
+          }
+        },
+        {
+          "id": "B",
+          "text": {
+            "en": "Give a concrete example",
+            "zh": null
+          }
+        },
+        {
+          "id": "C",
+          "text": {
+            "en": "Draw, show, or demonstrate it",
+            "zh": null
+          }
+        },
+        {
+          "id": "D",
+          "text": {
+            "en": "Ask which part is unclear",
+            "zh": null
+          }
+        },
+        {
+          "id": "E",
+          "text": {
+            "en": "Ask them how they are currently understanding it",
+            "zh": null
+          }
+        },
+        {
+          "id": "F",
+          "text": {
+            "en": "Break the idea into smaller parts",
+            "zh": null
+          }
+        },
+        {
+          "id": "G",
+          "text": {
+            "en": "It depends on what I'm explaining",
+            "zh": null
+          }
+        }
+      ],
+      "allow_free_text": false,
+      "allow_multiple": false,
+      "max_selections": 1,
+      "applicability": {
+        "major": [
+          "all"
+        ],
+        "year": [
+          "all"
+        ],
+        "country": [
+          "all"
+        ]
+      },
+      "trigger": null,
+      "required": false,
+      "source_metadata": {
+        "original_id": "Q34",
+        "original_title": "Explaining Ideas",
+        "original_section": "F. Collaboration & Communication"
+      },
+      "conversion_status": "ok",
+      "conversion_notes": []
+    },
+    {
+      "id": "Q35",
+      "version": 1,
+      "layer": "core",
+      "question_type": "self_reflection",
+      "dimension": [
+        "collaboration_communication"
+      ],
+      "signals": [
+        "COM2"
+      ],
+      "text": {
+        "en": "In group projects, where do you usually contribute most naturally?",
+        "zh": null
+      },
+      "instruction": {
+        "en": null,
+        "zh": null
+      },
+      "options": [
+        {
+          "id": "A",
+          "text": {
+            "en": "Technical or task work",
+            "zh": null
+          }
+        },
+        {
+          "id": "B",
+          "text": {
+            "en": "Generating ideas",
+            "zh": null
+          }
+        },
+        {
+          "id": "C",
+          "text": {
+            "en": "Organising the work",
+            "zh": null
+          }
+        },
+        {
+          "id": "D",
+          "text": {
+            "en": "Keeping everyone aligned",
+            "zh": null
+          }
+        },
+        {
+          "id": "E",
+          "text": {
+            "en": "Checking quality",
+            "zh": null
+          }
+        },
+        {
+          "id": "F",
+          "text": {
+            "en": "Explaining or presenting",
+            "zh": null
+          }
+        },
+        {
+          "id": "G",
+          "text": {
+            "en": "I don't think I have a consistent role",
+            "zh": null
+          }
+        }
+      ],
+      "allow_free_text": false,
+      "allow_multiple": false,
+      "max_selections": 1,
+      "applicability": {
+        "major": [
+          "all"
+        ],
+        "year": [
+          "all"
+        ],
+        "country": [
+          "all"
+        ]
+      },
+      "trigger": null,
+      "required": false,
+      "source_metadata": {
+        "original_id": "Q35",
+        "original_title": "Natural Team Contribution",
+        "original_section": "F. Collaboration & Communication"
+      },
+      "conversion_status": "ok",
+      "conversion_notes": []
+    },
+    {
+      "id": "Q36",
+      "version": 1,
+      "layer": "contextual",
+      "question_type": "behavioural_anchor",
+      "dimension": [
+        "collaboration_communication"
+      ],
+      "signals": [
+        "COM1"
+      ],
+      "text": {
+        "en": "When you give teammates an update on your work, what do you naturally focus on most?",
+        "zh": null
+      },
+      "instruction": {
+        "en": null,
+        "zh": null
+      },
+      "options": [
+        {
+          "id": "A",
+          "text": {
+            "en": "What I've completed",
+            "zh": null
+          }
+        },
+        {
+          "id": "B",
+          "text": {
+            "en": "What I'm currently working on",
+            "zh": null
+          }
+        },
+        {
+          "id": "C",
+          "text": {
+            "en": "Problems or blockers I've encountered",
+            "zh": null
+          }
+        },
+        {
+          "id": "D",
+          "text": {
+            "en": "Why I made certain decisions",
+            "zh": null
+          }
+        },
+        {
+          "id": "E",
+          "text": {
+            "en": "What I need from other people",
+            "zh": null
+          }
+        },
+        {
+          "id": "F",
+          "text": {
+            "en": "What I plan to do next",
+            "zh": null
+          }
+        },
+        {
+          "id": "G",
+          "text": {
+            "en": "I usually keep updates very brief unless someone asks",
+            "zh": null
+          }
+        }
+      ],
+      "allow_free_text": false,
+      "allow_multiple": false,
+      "max_selections": 1,
+      "applicability": {
+        "major": [
+          "all"
+        ],
+        "year": [
+          "all"
+        ],
+        "country": [
+          "all"
+        ]
+      },
+      "trigger": null,
+      "required": false,
+      "source_metadata": {
+        "original_id": "Q36",
+        "original_title": "Communicating Progress",
+        "original_section": "F. Collaboration & Communication"
+      },
+      "conversion_status": "ok",
+      "conversion_notes": []
+    },
+    {
+      "id": "Q37",
+      "version": 1,
+      "layer": "contextual",
+      "question_type": "micro_scenario",
+      "dimension": [
+        "collaboration_communication"
+      ],
+      "signals": [
+        "COM2",
+        "COM1"
+      ],
+      "text": {
+        "en": "Several people in your team have different ideas about how to proceed. What role do you naturally tend to take in the discussion?",
+        "zh": null
+      },
+      "instruction": {
+        "en": null,
+        "zh": null
+      },
+      "options": [
+        {
+          "id": "A",
+          "text": {
+            "en": "Explain and defend the idea I think will work",
+            "zh": null
+          }
+        },
+        {
+          "id": "B",
+          "text": {
+            "en": "Ask questions to understand the different ideas",
+            "zh": null
+          }
+        },
+        {
+          "id": "C",
+          "text": {
+            "en": "Compare the ideas against the project needs",
+            "zh": null
+          }
+        },
+        {
+          "id": "D",
+          "text": {
+            "en": "Look for a way to combine parts of different ideas",
+            "zh": null
+          }
+        },
+        {
+          "id": "E",
+          "text": {
+            "en": "Help summarise where everyone agrees and disagrees",
+            "zh": null
+          }
+        },
+        {
+          "id": "F",
+          "text": {
+            "en": "Listen first before deciding what I think",
+            "zh": null
+          }
+        },
+        {
+          "id": "G",
+          "text": {
+            "en": "It depends on the topic",
+            "zh": null
+          }
+        }
+      ],
+      "allow_free_text": false,
+      "allow_multiple": false,
+      "max_selections": 1,
+      "applicability": {
+        "major": [
+          "all"
+        ],
+        "year": [
+          "all"
+        ],
+        "country": [
+          "all"
+        ]
+      },
+      "trigger": null,
+      "required": false,
+      "source_metadata": {
+        "original_id": "Q37",
+        "original_title": "Different Ideas in a Team",
+        "original_section": "F. Collaboration & Communication"
+      },
+      "conversion_status": "ok",
+      "conversion_notes": []
+    },
+    {
+      "id": "Q38",
+      "version": 1,
+      "layer": "contextual",
+      "question_type": "preference_contrast",
+      "dimension": [
+        "collaboration_communication"
+      ],
+      "signals": [
+        "COM1"
+      ],
+      "text": {
+        "en": "Which communication situation feels easiest for you?",
+        "zh": null
+      },
+      "instruction": {
+        "en": null,
+        "zh": null
+      },
+      "options": [
+        {
+          "id": "A",
+          "text": {
+            "en": "Explaining something one-to-one",
+            "zh": null
+          }
+        },
+        {
+          "id": "B",
+          "text": {
+            "en": "Small group discussion",
+            "zh": null
+          }
+        },
+        {
+          "id": "C",
+          "text": {
+            "en": "Writing things down clearly",
+            "zh": null
+          }
+        },
+        {
+          "id": "D",
+          "text": {
+            "en": "Presenting to a group",
+            "zh": null
+          }
+        },
+        {
+          "id": "E",
+          "text": {
+            "en": "Coordinating people",
+            "zh": null
+          }
+        },
+        {
+          "id": "F",
+          "text": {
+            "en": "None feel particularly easy",
+            "zh": null
+          }
+        }
+      ],
+      "allow_free_text": false,
+      "allow_multiple": false,
+      "max_selections": 1,
+      "applicability": {
+        "major": [
+          "all"
+        ],
+        "year": [
+          "all"
+        ],
+        "country": [
+          "all"
+        ]
+      },
+      "trigger": null,
+      "required": false,
+      "source_metadata": {
+        "original_id": "Q38",
+        "original_title": "Communication Preference",
+        "original_section": "F. Collaboration & Communication"
+      },
+      "conversion_status": "ok",
+      "conversion_notes": []
+    },
+    {
+      "id": "Q39",
+      "version": 1,
+      "layer": "adaptive",
+      "question_type": "follow_up_reflection",
+      "dimension": [
+        "collaboration_communication",
+        "self_perception_confidence"
+      ],
+      "signals": [
+        "COM1",
+        "SELF2"
+      ],
+      "text": {
+        "en": "When you say communication is difficult for you, which part are you mostly thinking about?",
+        "zh": null
+      },
+      "instruction": {
+        "en": null,
+        "zh": null
+      },
+      "options": [
+        {
+          "id": "A",
+          "text": {
+            "en": "Speaking in front of people",
+            "zh": null
+          }
+        },
+        {
+          "id": "B",
+          "text": {
+            "en": "Explaining complicated ideas",
+            "zh": null
+          }
+        },
+        {
+          "id": "C",
+          "text": {
+            "en": "Starting conversations",
+            "zh": null
+          }
+        },
+        {
+          "id": "D",
+          "text": {
+            "en": "Disagreeing with people",
+            "zh": null
+          }
+        },
+        {
+          "id": "E",
+          "text": {
+            "en": "Working in groups",
+            "zh": null
+          }
+        },
+        {
+          "id": "F",
+          "text": {
+            "en": "Writing clearly",
+            "zh": null
+          }
+        },
+        {
+          "id": "G",
+          "text": {
+            "en": "Something else",
+            "zh": null
+          }
+        }
+      ],
+      "allow_free_text": false,
+      "allow_multiple": false,
+      "max_selections": 1,
+      "applicability": {
+        "major": [
+          "all"
+        ],
+        "year": [
+          "all"
+        ],
+        "country": [
+          "all"
+        ]
+      },
+      "trigger": {
+        "all": [
+          {
+            "field": "communication_difficulty_indicated",
+            "operator": "eq",
+            "value": "true"
+          }
+        ],
+        "any": [],
+        "none": []
+      },
+      "required": false,
+      "source_metadata": {
+        "original_id": "Q39",
+        "original_title": "Unpacking Communication Difficulty",
+        "original_section": "F. Collaboration & Communication"
+      },
+      "conversion_status": "ok",
+      "conversion_notes": [
+        "Adaptive trigger: student indicated communication difficulty or low confidence in communication."
+      ]
+    },
+    {
+      "id": "Q40",
+      "version": 1,
+      "layer": "adaptive",
+      "question_type": "follow_up_reflection",
+      "dimension": [
+        "collaboration_communication",
+        "execution_ownership"
+      ],
+      "signals": [
+        "COM2",
+        "EXEC1"
+      ],
+      "text": {
+        "en": "You seem to prefer working independently. When teamwork goes well for you, what usually makes it work?",
+        "zh": null
+      },
+      "instruction": {
+        "en": null,
+        "zh": null
+      },
+      "options": [
+        {
+          "id": "A",
+          "text": {
+            "en": "Everyone has clear individual responsibilities",
+            "zh": null
+          }
+        },
+        {
+          "id": "B",
+          "text": {
+            "en": "We discuss ideas often",
+            "zh": null
+          }
+        },
+        {
+          "id": "C",
+          "text": {
+            "en": "I trust the people I'm working with",
+            "zh": null
+          }
+        },
+        {
+          "id": "D",
+          "text": {
+            "en": "Someone keeps the team organised",
+            "zh": null
+          }
+        },
+        {
+          "id": "E",
+          "text": {
+            "en": "I can still control my own part",
+            "zh": null
+          }
+        },
+        {
+          "id": "F",
+          "text": {
+            "en": "I generally still prefer working alone",
+            "zh": null
+          }
+        }
+      ],
+      "allow_free_text": false,
+      "allow_multiple": false,
+      "max_selections": 1,
+      "applicability": {
+        "major": [
+          "all"
+        ],
+        "year": [
+          "all"
+        ],
+        "country": [
+          "all"
+        ]
+      },
+      "trigger": {
+        "all": [
+          {
+            "field": "preference_independent_work",
+            "operator": "eq",
+            "value": "high"
+          }
+        ],
+        "any": [],
+        "none": []
+      },
+      "required": false,
+      "source_metadata": {
+        "original_id": "Q40",
+        "original_title": "Independent Work and Teamwork",
+        "original_section": "F. Collaboration & Communication"
+      },
+      "conversion_status": "ok",
+      "conversion_notes": [
+        "Adaptive trigger: student expressed preference for working independently."
+      ]
+    },
+    {
+      "id": "Q41",
+      "version": 1,
+      "layer": "core",
+      "question_type": "micro_scenario",
+      "dimension": [
+        "self_management"
+      ],
+      "signals": [
+        "MGMT1"
+      ],
+      "text": {
+        "en": "It's two days before a deadline and you realise the original plan probably won't be completed in full. What are you most likely to do first?",
+        "zh": null
+      },
+      "instruction": {
+        "en": null,
+        "zh": null
+      },
+      "options": [
+        {
+          "id": "A",
+          "text": {
+            "en": "Keep the plan and increase the amount of time I spend on it",
+            "zh": null
+          }
+        },
+        {
+          "id": "B",
+          "text": {
+            "en": "Review which parts matter most",
+            "zh": null
+          }
+        },
+        {
+          "id": "C",
+          "text": {
+            "en": "Make sure my own responsibilities are completed first",
+            "zh": null
+          }
+        },
+        {
+          "id": "D",
+          "text": {
+            "en": "Discuss with the team how the remaining work should be divided",
+            "zh": null
+          }
+        },
+        {
+          "id": "E",
+          "text": {
+            "en": "Reduce the scope so the main idea can still be completed",
+            "zh": null
+          }
+        },
+        {
+          "id": "F",
+          "text": {
+            "en": "Ask a teacher, mentor, or supervisor what should be prioritised",
+            "zh": null
+          }
+        },
+        {
+          "id": "G",
+          "text": {
+            "en": "It would depend on what caused the delay",
+            "zh": null
+          }
+        }
+      ],
+      "allow_free_text": false,
+      "allow_multiple": false,
+      "max_selections": 1,
+      "applicability": {
+        "major": [
+          "all"
+        ],
+        "year": [
+          "all"
+        ],
+        "country": [
+          "all"
+        ]
+      },
+      "trigger": null,
+      "required": false,
+      "source_metadata": {
+        "original_id": "Q41",
+        "original_title": "Prioritisation Under Deadline Pressure",
+        "original_section": "G. Self-Management"
+      },
+      "conversion_status": "ok",
+      "conversion_notes": [
+        "Runtime rule: avoid co-occurrence with Q42 unless further clarification is needed.",
+        "Selection rule: Use when EngiPath needs information about prioritisation under time pressure.",
+        "Avoid with: Q42 unless further clarification is genuinely needed."
+      ]
+    },
+    {
+      "id": "Q42",
+      "version": 1,
+      "layer": "contextual",
+      "question_type": "micro_scenario",
+      "dimension": [
+        "self_management"
+      ],
+      "signals": [
+        "MGMT1"
+      ],
+      "text": {
+        "en": "When you realise you're significantly behind your original plan, what do you usually do first?",
+        "zh": null
+      },
+      "instruction": {
+        "en": null,
+        "zh": null
+      },
+      "options": [
+        {
+          "id": "A",
+          "text": {
+            "en": "Keep the original plan but put more time into it",
+            "zh": null
+          }
+        },
+        {
+          "id": "B",
+          "text": {
+            "en": "Rework the schedule",
+            "zh": null
+          }
+        },
+        {
+          "id": "C",
+          "text": {
+            "en": "Reduce what I'm trying to complete",
+            "zh": null
+          }
+        },
+        {
+          "id": "D",
+          "text": {
+            "en": "Focus first on the parts that matter most",
+            "zh": null
+          }
+        },
+        {
+          "id": "E",
+          "text": {
+            "en": "Ask someone for help or feedback",
+            "zh": null
+          }
+        },
+        {
+          "id": "F",
+          "text": {
+            "en": "Pause and work out why I'm behind before changing the plan",
+            "zh": null
+          }
+        },
+        {
+          "id": "G",
+          "text": {
+            "en": "It depends on why I'm behind",
+            "zh": null
+          }
+        }
+      ],
+      "allow_free_text": false,
+      "allow_multiple": false,
+      "max_selections": 1,
+      "applicability": {
+        "major": [
+          "all"
+        ],
+        "year": [
+          "all"
+        ],
+        "country": [
+          "all"
+        ]
+      },
+      "trigger": null,
+      "required": false,
+      "source_metadata": {
+        "original_id": "Q42",
+        "original_title": "Responding When Behind Schedule",
+        "original_section": "G. Self-Management"
+      },
+      "conversion_status": "ok",
+      "conversion_notes": [
+        "Runtime rule: avoid co-occurrence with Q41 unless further clarification is needed.",
+        "Selection rule: Use when EngiPath needs information about recovery and adaptation after falling behind.",
+        "Avoid with: Q41 unless further clarification is genuinely needed."
+      ]
+    },
+    {
+      "id": "Q43",
+      "version": 1,
+      "layer": "contextual",
+      "question_type": "behavioural_anchor",
+      "dimension": [
+        "self_management"
+      ],
+      "signals": [
+        "MGMT1"
+      ],
+      "text": {
+        "en": "When you start a task that will take several weeks, what kind of plan do you usually make?",
+        "zh": null
+      },
+      "instruction": {
+        "en": null,
+        "zh": null
+      },
+      "options": [
+        {
+          "id": "A",
+          "text": {
+            "en": "A fairly detailed plan from the beginning",
+            "zh": null
+          }
+        },
+        {
+          "id": "B",
+          "text": {
+            "en": "A few major milestones and deadlines",
+            "zh": null
+          }
+        },
+        {
+          "id": "C",
+          "text": {
+            "en": "A rough direction, then adjust as I learn more",
+            "zh": null
+          }
+        },
+        {
+          "id": "D",
+          "text": {
+            "en": "I start working and plan the next steps along the way",
+            "zh": null
+          }
+        },
+        {
+          "id": "E",
+          "text": {
+            "en": "I mostly organise my work around upcoming deadlines",
+            "zh": null
+          }
+        },
+        {
+          "id": "F",
+          "text": {
+            "en": "My planning style depends strongly on the project",
+            "zh": null
+          }
+        }
+      ],
+      "allow_free_text": false,
+      "allow_multiple": false,
+      "max_selections": 1,
+      "applicability": {
+        "major": [
+          "all"
+        ],
+        "year": [
+          "all"
+        ],
+        "country": [
+          "all"
+        ]
+      },
+      "trigger": null,
+      "required": false,
+      "source_metadata": {
+        "original_id": "Q43",
+        "original_title": "Planning a Multi-Week Task",
+        "original_section": "G. Self-Management"
+      },
+      "conversion_status": "ok",
+      "conversion_notes": []
+    },
+    {
+      "id": "Q44",
+      "version": 1,
+      "layer": "contextual",
+      "question_type": "past_experience",
+      "dimension": [
+        "self_management"
+      ],
+      "signals": [
+        "MGMT1"
+      ],
+      "text": {
+        "en": "Think about a project where time became tight. Did you change the scope or priorities?",
+        "zh": null
+      },
+      "instruction": {
+        "en": null,
+        "zh": null
+      },
+      "options": [
+        {
+          "id": "A",
+          "text": {
+            "en": "Yes, I decided what could be reduced",
+            "zh": null
+          }
+        },
+        {
+          "id": "B",
+          "text": {
+            "en": "Yes, but someone else made that decision",
+            "zh": null
+          }
+        },
+        {
+          "id": "C",
+          "text": {
+            "en": "No, we tried to complete everything",
+            "zh": null
+          }
+        },
+        {
+          "id": "D",
+          "text": {
+            "en": "No, the original plan still worked",
+            "zh": null
+          }
+        },
+        {
+          "id": "E",
+          "text": {
+            "en": "I haven't encountered this yet",
+            "zh": null
+          }
+        }
+      ],
+      "allow_free_text": false,
+      "allow_multiple": false,
+      "max_selections": 1,
+      "applicability": {
+        "major": [
+          "all"
+        ],
+        "year": [
+          "all"
+        ],
+        "country": [
+          "all"
+        ]
+      },
+      "trigger": null,
+      "required": false,
+      "source_metadata": {
+        "original_id": "Q44",
+        "original_title": "Adjusting Scope Under Time Pressure",
+        "original_section": "G. Self-Management"
+      },
+      "conversion_status": "ok",
+      "conversion_notes": []
+    },
+    {
+      "id": "Q45",
+      "version": 1,
+      "layer": "core",
+      "question_type": "micro_scenario",
+      "dimension": [
+        "self_management"
+      ],
+      "signals": [
+        "MGMT2"
+      ],
+      "text": {
+        "en": "When something you've worked hard on doesn't succeed, what are you usually most interested in doing afterwards?",
+        "zh": null
+      },
+      "instruction": {
+        "en": null,
+        "zh": null
+      },
+      "options": [
+        {
+          "id": "A",
+          "text": {
+            "en": "Moving on quickly",
+            "zh": null
+          }
+        },
+        {
+          "id": "B",
+          "text": {
+            "en": "Finding out exactly what went wrong",
+            "zh": null
+          }
+        },
+        {
+          "id": "C",
+          "text": {
+            "en": "Trying again",
+            "zh": null
+          }
+        },
+        {
+          "id": "D",
+          "text": {
+            "en": "Getting feedback",
+            "zh": null
+          }
+        },
+        {
+          "id": "E",
+          "text": {
+            "en": "Changing direction",
+            "zh": null
+          }
+        },
+        {
+          "id": "F",
+          "text": {
+            "en": "I usually need some time before thinking about it again",
+            "zh": null
+          }
+        }
+      ],
+      "allow_free_text": false,
+      "allow_multiple": false,
+      "max_selections": 1,
+      "applicability": {
+        "major": [
+          "all"
+        ],
+        "year": [
+          "all"
+        ],
+        "country": [
+          "all"
+        ]
+      },
+      "trigger": null,
+      "required": false,
+      "source_metadata": {
+        "original_id": "Q45",
+        "original_title": "Response After a Setback",
+        "original_section": "G. Self-Management"
+      },
+      "conversion_status": "ok",
+      "conversion_notes": [
+        "Runtime rule: avoid co-occurrence with Q46 unless further clarification is needed.",
+        "Selection rule: Use when EngiPath wants to understand the student's natural immediate orientation following a setback.",
+        "Avoid with: Q46 unless further clarification is needed."
+      ]
+    },
+    {
+      "id": "Q46",
+      "version": 1,
+      "layer": "contextual",
+      "question_type": "micro_scenario",
+      "dimension": [
+        "self_management"
+      ],
+      "signals": [
+        "MGMT2"
+      ],
+      "text": {
+        "en": "When a result doesn't go the way you expected, what usually helps you decide what to change next?",
+        "zh": null
+      },
+      "instruction": {
+        "en": null,
+        "zh": null
+      },
+      "options": [
+        {
+          "id": "A",
+          "text": {
+            "en": "Looking closely at what went wrong",
+            "zh": null
+          }
+        },
+        {
+          "id": "B",
+          "text": {
+            "en": "Comparing the result with what I expected",
+            "zh": null
+          }
+        },
+        {
+          "id": "C",
+          "text": {
+            "en": "Asking someone else for feedback",
+            "zh": null
+          }
+        },
+        {
+          "id": "D",
+          "text": {
+            "en": "Trying a smaller or simpler version",
+            "zh": null
+          }
+        },
+        {
+          "id": "E",
+          "text": {
+            "en": "Trying a different approach",
+            "zh": null
+          }
+        },
+        {
+          "id": "F",
+          "text": {
+            "en": "Taking some time before deciding what to do next",
+            "zh": null
+          }
+        },
+        {
+          "id": "G",
+          "text": {
+            "en": "It depends on why it didn't work",
+            "zh": null
+          }
+        }
+      ],
+      "allow_free_text": false,
+      "allow_multiple": false,
+      "max_selections": 1,
+      "applicability": {
+        "major": [
+          "all"
+        ],
+        "year": [
+          "all"
+        ],
+        "country": [
+          "all"
+        ]
+      },
+      "trigger": null,
+      "required": false,
+      "source_metadata": {
+        "original_id": "Q46",
+        "original_title": "Deciding What to Change After a Setback",
+        "original_section": "G. Self-Management"
+      },
+      "conversion_status": "ok",
+      "conversion_notes": [
+        "Runtime rule: avoid co-occurrence with Q45 unless further clarification is needed.",
+        "Selection rule: Use when EngiPath needs information about how the student chooses a next strategy after a setback.",
+        "Avoid with: Q45 unless further clarification is needed."
+      ]
+    },
+    {
+      "id": "Q47",
+      "version": 1,
+      "layer": "core",
+      "question_type": "preference_contrast",
+      "dimension": [
+        "learning_work_preferences"
+      ],
+      "signals": [
+        "PREF1"
+      ],
+      "text": {
+        "en": "When learning something new, which feels closer to you?\n\nA: I want to understand how it works before I start using it.\n\nB: I prefer trying it first and understanding more as I go.",
+        "zh": null
+      },
+      "instruction": {
+        "en": null,
+        "zh": null
+      },
+      "options": [
+        {
+          "id": "A",
+          "text": {
+            "en": "Strongly A",
+            "zh": null
+          }
+        },
+        {
+          "id": "B",
+          "text": {
+            "en": "Slightly A",
+            "zh": null
+          }
+        },
+        {
+          "id": "C",
+          "text": {
+            "en": "Somewhere in between",
+            "zh": null
+          }
+        },
+        {
+          "id": "D",
+          "text": {
+            "en": "Slightly B",
+            "zh": null
+          }
+        },
+        {
+          "id": "E",
+          "text": {
+            "en": "Strongly B",
+            "zh": null
+          }
+        }
+      ],
+      "allow_free_text": false,
+      "allow_multiple": false,
+      "max_selections": 1,
+      "applicability": {
+        "major": [
+          "all"
+        ],
+        "year": [
+          "all"
+        ],
+        "country": [
+          "all"
+        ]
+      },
+      "trigger": null,
+      "required": false,
+      "source_metadata": {
+        "original_id": "Q47",
+        "original_title": "Theory First vs Practice First",
+        "original_section": "H. Learning & Work Preference"
+      },
+      "conversion_status": "ok",
+      "conversion_notes": []
+    },
+    {
+      "id": "Q48",
+      "version": 1,
+      "layer": "contextual",
+      "question_type": "preference_contrast",
+      "dimension": [
+        "learning_work_preferences"
+      ],
+      "signals": [
+        "PREF1"
+      ],
+      "text": {
+        "en": "If you had six weeks to learn a new skill, which would you naturally choose?",
+        "zh": null
+      },
+      "instruction": {
+        "en": null,
+        "zh": null
+      },
+      "options": [
+        {
+          "id": "A",
+          "text": {
+            "en": "A structured course with weekly lessons",
+            "zh": null
+          }
+        },
+        {
+          "id": "B",
+          "text": {
+            "en": "A guided project",
+            "zh": null
+          }
+        },
+        {
+          "id": "C",
+          "text": {
+            "en": "A project I design myself",
+            "zh": null
+          }
+        },
+        {
+          "id": "D",
+          "text": {
+            "en": "Learning from different resources as needed",
+            "zh": null
+          }
+        },
+        {
+          "id": "E",
+          "text": {
+            "en": "Learning together with other people",
+            "zh": null
+          }
+        },
+        {
+          "id": "F",
+          "text": {
+            "en": "I'm not sure",
+            "zh": null
+          }
+        }
+      ],
+      "allow_free_text": false,
+      "allow_multiple": false,
+      "max_selections": 1,
+      "applicability": {
+        "major": [
+          "all"
+        ],
+        "year": [
+          "all"
+        ],
+        "country": [
+          "all"
+        ]
+      },
+      "trigger": null,
+      "required": false,
+      "source_metadata": {
+        "original_id": "Q48",
+        "original_title": "Preferred Six-Week Learning Format",
+        "original_section": "H. Learning & Work Preference"
+      },
+      "conversion_status": "ok",
+      "conversion_notes": []
+    },
+    {
+      "id": "Q49",
+      "version": 1,
+      "layer": "core",
+      "question_type": "preference_contrast",
+      "dimension": [
+        "learning_work_preferences"
+      ],
+      "signals": [
+        "PREF1"
+      ],
+      "text": {
+        "en": "When you have limited time to learn a broad topic, which approach feels more natural to you?\n\nA: Get a basic understanding of many parts first.\n\nB: Understand one important part deeply before expanding.",
+        "zh": null
+      },
+      "instruction": {
+        "en": null,
+        "zh": null
+      },
+      "options": [
+        {
+          "id": "A",
+          "text": {
+            "en": "Strongly A",
+            "zh": null
+          }
+        },
+        {
+          "id": "B",
+          "text": {
+            "en": "Slightly A",
+            "zh": null
+          }
+        },
+        {
+          "id": "C",
+          "text": {
+            "en": "Somewhere in between",
+            "zh": null
+          }
+        },
+        {
+          "id": "D",
+          "text": {
+            "en": "Slightly B",
+            "zh": null
+          }
+        },
+        {
+          "id": "E",
+          "text": {
+            "en": "Strongly B",
+            "zh": null
+          }
+        }
+      ],
+      "allow_free_text": false,
+      "allow_multiple": false,
+      "max_selections": 1,
+      "applicability": {
+        "major": [
+          "all"
+        ],
+        "year": [
+          "all"
+        ],
+        "country": [
+          "all"
+        ]
+      },
+      "trigger": null,
+      "required": false,
+      "source_metadata": {
+        "original_id": "Q49",
+        "original_title": "Breadth vs Depth",
+        "original_section": "H. Learning & Work Preference"
+      },
+      "conversion_status": "ok",
+      "conversion_notes": []
+    },
+    {
+      "id": "Q50",
+      "version": 1,
+      "layer": "contextual",
+      "question_type": "preference_contrast",
+      "dimension": [
+        "learning_work_preferences",
+        "self_management"
+      ],
+      "signals": [
+        "PREF1",
+        "MGMT1"
+      ],
+      "text": {
+        "en": "If I suggested something for you to work on next, what would make you most likely to actually follow through with it?",
+        "zh": null
+      },
+      "instruction": {
+        "en": null,
+        "zh": null
+      },
+      "options": [
+        {
+          "id": "A",
+          "text": {
+            "en": "A clear step-by-step plan",
+            "zh": null
+          }
+        },
+        {
+          "id": "B",
+          "text": {
+            "en": "A project with a useful final outcome",
+            "zh": null
+          }
+        },
+        {
+          "id": "C",
+          "text": {
+            "en": "Freedom to choose how I approach it",
+            "zh": null
+          }
+        },
+        {
+          "id": "D",
+          "text": {
+            "en": "Regular checkpoints",
+            "zh": null
+          }
+        },
+        {
+          "id": "E",
+          "text": {
+            "en": "Working with someone else",
+            "zh": null
+          }
+        },
+        {
+          "id": "F",
+          "text": {
+            "en": "A visible challenge or goal",
+            "zh": null
+          }
+        }
+      ],
+      "allow_free_text": false,
+      "allow_multiple": false,
+      "max_selections": 1,
+      "applicability": {
+        "major": [
+          "all"
+        ],
+        "year": [
+          "all"
+        ],
+        "country": [
+          "all"
+        ]
+      },
+      "trigger": null,
+      "required": false,
+      "source_metadata": {
+        "original_id": "Q50",
+        "original_title": "Growth Plan Follow-Through",
+        "original_section": "H. Learning & Work Preference"
+      },
+      "conversion_status": "ok",
+      "conversion_notes": []
+    }
+  ],
+  "conversion_report": {
+    "questions_received": 50,
+    "questions_converted": 50,
+    "questions_ok": 50,
+    "questions_needing_review": 0,
+    "core_count": 17,
+    "contextual_count": 26,
+    "adaptive_count": 7,
+    "issues": []
+  }
+}

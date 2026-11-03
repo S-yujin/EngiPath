@@ -1,0 +1,500 @@
+{
+  "_meta": {
+    "title": "EngiPath Synthetic Test Personas — V1",
+    "description": "Deliverable J — 8 synthetic questionnaire test cases for validating the intelligence layer.",
+    "version": "1.0",
+    "created": "2026-08-18",
+    "note": "These are NOT real students. Each persona defines a response pattern, expected signal state, expected adaptive behaviour, and expected profile outcome."
+  },
+
+  "test_personas": [
+    {
+      "persona_id": "TEST01",
+      "title": "Hidden technical strength",
+      "description": "A student with low self-confidence but substantial technical experience. Independent troubleshooting is strong. Peers frequently ask them for help. The system should detect the self-perception vs experience discrepancy.",
+
+      "key_response_pattern": {
+        "context": { "major": "Computer Science", "year": 3, "country": "China" },
+        "Q01_options": ["A", "B"],
+        "Q02_options": ["C", "E"],
+        "Q06_options": ["B"],
+        "Q06_note": "Selects problem-solving as a perceived strength but with hesitation",
+        "Q07_options": ["D"],
+        "Q07_note": "Identifies communication as development area",
+        "Q08_options": ["C"],
+        "Q08_note": "Self-reports LOW confidence in problem-solving despite evidence",
+        "Q13_options": ["A"],
+        "Q13_note": "Breaks unfamiliar problems into sub-components (strong PS1, strength 0.80)",
+        "Q14_options": ["D"],
+        "Q14_note": "Methodical systematic debugging (strong PS2, strength 0.82)",
+        "Q20_options": ["A"],
+        "Q20_note": "Seeks out extra resources independently (strong LEARN1)",
+        "Q21_options": ["A"],
+        "Q21_note": "Adapts learning strategy when stuck (strong LEARN2)",
+        "Q27_options": ["A"],
+        "Q27_note": "Works independently on complex tasks",
+        "Q28_options": ["A"],
+        "Q28_note": "Takes ownership of project scope decisions",
+        "Q34_options": ["C"],
+        "Q34_note": "Moderate idea communication — clear in small groups, less so in large",
+        "Q35_options": ["B"],
+        "Q35_note": "Moderate team contribution",
+        "Q41_options": ["B"],
+        "Q41_note": "Reasonable prioritisation",
+        "Q45_options": ["A"],
+        "Q45_note": "Tries alternative approaches when setback occurs",
+        "Q47_options": ["A"],
+        "Q47_note": "Prefers hands-on learning",
+        "Q49_options": ["B"]
+      },
+
+      "expected_signal_state": {
+        "PS1": { "experience_strength_range": [0.55, 0.80], "coverage": "partial", "direction": "positive" },
+        "PS2": { "experience_strength_range": [0.55, 0.82], "coverage": "partial", "direction": "positive" },
+        "LEARN1": { "experience_strength_range": [0.50, 0.75], "coverage": "partial" },
+        "LEARN2": { "experience_strength_range": [0.50, 0.75], "coverage": "partial" },
+        "EXEC1": { "experience_strength_range": [0.50, 0.75], "coverage": "partial" },
+        "EXEC2": { "experience_strength_range": [0.50, 0.75], "coverage": "partial" },
+        "self_perception_confidence": { "problem_solving": "low" },
+        "expected_contradictions": ["CR01 for PS1 or PS2 — low confidence vs high experience"]
+      },
+
+      "expected_adaptive_behaviour": [
+        "System should detect CR01 contradiction: student confidence LOW but PS2 experience HIGH.",
+        "Should prioritise an adaptive question that explores whether the student underestimates their troubleshooting ability.",
+        "Should NOT prematurely conclude the student is 'underconfident' as a trait."
+      ],
+
+      "expected_profile_outcome": {
+        "PS2_classification": "possible_hidden_strength",
+        "PS2_reason_code": "low_self_view_high_experience",
+        "PS1_classification": "possible_hidden_strength OR developing_picture (depends on aggregated strength after weighting)",
+        "communication_classification": "developing_picture",
+        "heard_summary_should_include": "Your responses suggest you may have more experience in troubleshooting than you give yourself credit for.",
+        "must_NOT_contain": ["underconfident", "personality type", "career recommendation"]
+      }
+    },
+
+    {
+      "persona_id": "TEST02",
+      "title": "Confidence ahead of evidence",
+      "description": "A student with high self-confidence but limited real experience. Mostly tutorial/guided work. The system should flag 'worth_validating' rather than 'overconfident'.",
+
+      "key_response_pattern": {
+        "context": { "major": "Electrical Engineering", "year": 1, "country": "Malaysia" },
+        "Q01_options": ["C", "D"],
+        "Q02_options": ["A", "B"],
+        "Q06_options": ["A"],
+        "Q06_note": "Selects technical skills as perceived strength",
+        "Q07_options": ["C"],
+        "Q07_note": "Identifies time management as development area",
+        "Q08_options": ["A"],
+        "Q08_note": "Self-reports HIGH confidence in problem-solving",
+        "Q13_options": ["C"],
+        "Q13_note": "Tries to solve everything at once rather than decomposing (developing PS1, strength ~0.35)",
+        "Q14_options": ["B"],
+        "Q14_note": "Asks classmate or searches online immediately (developing PS2, strength ~0.30)",
+        "Q20_options": ["C"],
+        "Q20_note": "Follows the textbook/tutorial closely (developing LEARN1)",
+        "Q21_options": ["C"],
+        "Q21_note": "Sticks with the same approach even when stuck",
+        "Q27_options": ["C"],
+        "Q27_note": "Needs guidance for complex tasks",
+        "Q28_options": ["C"],
+        "Q28_note": "Follows assigned scope, doesn't extend",
+        "Q34_options": ["B"],
+        "Q34_note": "Communicates ideas but only in familiar territory",
+        "Q35_options": ["B"],
+        "Q35_note": "Participates in teams but follows rather than leads",
+        "Q41_options": ["C"],
+        "Q41_note": "Struggles with prioritisation under pressure",
+        "Q45_options": ["C"],
+        "Q45_note": "Gets frustrated and pauses when setback occurs",
+        "Q47_options": ["B"],
+        "Q47_note": "Prefers structured learning with clear instructions",
+        "Q49_options": ["A"]
+      },
+
+      "expected_signal_state": {
+        "PS1": { "experience_strength_range": [0.15, 0.40], "coverage": "partial", "direction": "developing" },
+        "PS2": { "experience_strength_range": [0.10, 0.35], "coverage": "partial", "direction": "developing" },
+        "self_perception_confidence": { "problem_solving": "high" },
+        "expected_contradictions": ["CR02 for PS1 and/or PS2 — high confidence vs low experience"]
+      },
+
+      "expected_adaptive_behaviour": [
+        "System should detect CR02: student confidence HIGH but experience evidence LOW.",
+        "Should explore whether the student has experiences not yet captured.",
+        "Should NOT label the student 'overconfident'."
+      ],
+
+      "expected_profile_outcome": {
+        "PS1_classification": "worth_validating",
+        "PS2_classification": "worth_validating",
+        "reason_code": "high_self_view_low_experience",
+        "must_NOT_contain": ["overconfident", "weak", "poor"]
+      }
+    },
+
+    {
+      "persona_id": "TEST03",
+      "title": "Genuine beginner",
+      "description": "A first-year student with low confidence and low experience. Few opportunities to demonstrate capabilities. The system should classify as 'still_taking_shape', never as 'weak'.",
+
+      "key_response_pattern": {
+        "context": { "major": "Mechanical Engineering", "year": 1, "country": "India" },
+        "Q01_options": ["E", "M"],
+        "Q01_note": "Curious about mechanical engineering but still exploring",
+        "Q02_options": ["A"],
+        "Q02_note": "Enjoys building/implementation",
+        "Q06_options": ["D"],
+        "Q06_note": "Unsure what strengths are — selects 'not sure yet'",
+        "Q07_options": ["E"],
+        "Q07_note": "Unsure what development areas are",
+        "Q08_options": ["C"],
+        "Q08_note": "Low confidence overall",
+        "Q13_options": ["D"],
+        "Q13_note": "Would wait for guidance (insufficient PS1 evidence)",
+        "Q14_options": ["C"],
+        "Q14_note": "Limited troubleshooting experience",
+        "Q20_options": ["D"],
+        "Q20_note": "Hasn't had many learning opportunities outside class",
+        "Q21_options": ["D"],
+        "Q21_note": "Limited strategy adaptation experience",
+        "Q27_options": ["D"],
+        "Q27_note": "Limited independence experience",
+        "Q28_options": ["D"],
+        "Q28_note": "No initiative examples yet",
+        "Q34_options": ["D"],
+        "Q34_note": "Limited communication experience",
+        "Q35_options": ["D"],
+        "Q35_note": "Limited team experience",
+        "Q41_options": ["D"],
+        "Q41_note": "Limited prioritisation experience",
+        "Q45_options": ["D"],
+        "Q45_note": "Limited setback experience",
+        "Q47_options": ["A"],
+        "Q49_options": ["C"]
+      },
+
+      "expected_signal_state": {
+        "most_signals": { "coverage": "insufficient or unobserved", "evidence_state": "insufficient" },
+        "state_confidence": "low across all capability signals",
+        "expected_contradictions": []
+      },
+
+      "expected_adaptive_behaviour": [
+        "System should NOT keep asking questions to try to force evidence.",
+        "Questionnaire should stop at or near minimum question count.",
+        "Profile should preserve unknown areas honestly."
+      ],
+
+      "expected_profile_outcome": {
+        "most_capabilities_classification": "still_taking_shape",
+        "reason_code": "insufficient_information",
+        "unknowns_should_be_populated": true,
+        "must_NOT_contain": ["weak", "low ability", "poor", "unskilled", "0.0 experience_strength as conclusion"]
+      }
+    },
+
+    {
+      "persona_id": "TEST04",
+      "title": "Well-calibrated experienced student",
+      "description": "A senior student with high confidence backed by strong, consistent experience across multiple signals. Evidence comes from diverse sources.",
+
+      "key_response_pattern": {
+        "context": { "major": "Computer Science", "year": 4, "country": "Australia" },
+        "Q01_options": ["A", "B"],
+        "Q02_options": ["C", "E", "F"],
+        "Q06_options": ["A"],
+        "Q06_note": "Clearly identifies problem-solving as strength",
+        "Q07_options": ["B"],
+        "Q07_note": "Identifies public speaking as area to develop",
+        "Q08_options": ["A"],
+        "Q08_note": "HIGH confidence in problem-solving",
+        "Q13_options": ["A"],
+        "Q13_note": "Strong problem framing — breaks into sub-problems (strength 0.80, behavioural_choice)",
+        "Q14_options": ["D"],
+        "Q14_note": "Strong systematic debugging (strength 0.82, behavioural_choice)",
+        "Q20_options": ["A"],
+        "Q20_note": "Strong learning initiative — seeks resources independently (strength 0.75, past_experience)",
+        "Q21_options": ["A"],
+        "Q21_note": "Adapts strategy effectively (strength 0.78)",
+        "Q27_options": ["A"],
+        "Q27_note": "Strong independence (strength 0.80, past_experience)",
+        "Q28_options": ["A"],
+        "Q28_note": "Takes ownership of project scope (strength 0.75)",
+        "Q34_options": ["A"],
+        "Q34_note": "Strong idea communication in technical contexts (strength 0.72)",
+        "Q35_options": ["B"],
+        "Q35_note": "Moderate team contribution — prefers technical roles",
+        "Q41_options": ["A"],
+        "Q41_note": "Strong prioritisation (strength 0.78)",
+        "Q45_options": ["A"],
+        "Q45_note": "Resilient — tries alternatives (strength 0.80)",
+        "Q47_options": ["A"],
+        "Q49_options": ["A"]
+      },
+
+      "expected_signal_state": {
+        "PS1": { "experience_strength_range": [0.55, 0.80], "coverage": "partial or sufficient" },
+        "PS2": { "experience_strength_range": [0.55, 0.82], "coverage": "partial or sufficient" },
+        "LEARN1": { "experience_strength_range": [0.50, 0.75] },
+        "EXEC1": { "experience_strength_range": [0.55, 0.80] },
+        "consistency": "high across most signals",
+        "self_perception_confidence": { "problem_solving": "high" }
+      },
+
+      "expected_adaptive_behaviour": [
+        "System should confirm alignment between confidence and evidence.",
+        "Few or no adaptive questions needed — signals are consistent.",
+        "Contextual questions may be selected to improve source diversity."
+      ],
+
+      "expected_profile_outcome": {
+        "PS1_classification": "supported_strength",
+        "PS2_classification": "supported_strength",
+        "LEARN1_classification": "supported_strength OR developing_picture",
+        "EXEC1_classification": "supported_strength OR developing_picture",
+        "reason_code_for_supported": "high_self_view_high_experience",
+        "must_NOT_contain": ["personality type", "career recommendation", "overall score"]
+      }
+    },
+
+    {
+      "persona_id": "TEST05",
+      "title": "Communication misconception",
+      "description": "A student who says 'I'm bad at communication' broadly, but evidence shows strong technical explanation and small-group communication. Only public-speaking confidence is genuinely low. The system must NOT classify ALL communication as poor.",
+
+      "key_response_pattern": {
+        "context": { "major": "Software Engineering", "year": 3, "country": "China" },
+        "Q01_options": ["A", "B"],
+        "Q02_options": ["C", "E"],
+        "Q06_options": ["A"],
+        "Q07_options": ["D"],
+        "Q07_note": "Identifies COMMUNICATION broadly as development area",
+        "Q08_options": ["B"],
+        "Q08_note": "Moderate overall confidence, LOW specifically for communication",
+        "Q13_options": ["A"],
+        "Q14_options": ["A"],
+        "Q20_options": ["B"],
+        "Q21_options": ["B"],
+        "Q27_options": ["B"],
+        "Q28_options": ["B"],
+        "Q34_options": ["A"],
+        "Q34_note": "Strong idea communication — explains technical concepts clearly (strength 0.72, COM1)",
+        "Q35_options": ["A"],
+        "Q35_note": "Strong small-group team contribution (strength 0.68, COM2)",
+        "Q41_options": ["B"],
+        "Q45_options": ["B"],
+        "Q47_options": ["A"],
+        "Q49_options": ["B"]
+      },
+
+      "expected_signal_state": {
+        "COM1": { "experience_strength_range": [0.45, 0.72], "coverage": "partial" },
+        "COM2": { "experience_strength_range": [0.40, 0.68], "coverage": "partial" },
+        "self_perception_development_area": "communication",
+        "expected_contradictions": [
+          "CR04 — broad self-criticism for 'communication' but COM1 evidence is positive",
+          "Possibly CR01 if COM1 experience is high enough relative to self-view"
+        ]
+      },
+
+      "expected_adaptive_behaviour": [
+        "System should detect the broad negative judgement with narrow evidence (CR04).",
+        "Should select an adaptive question that unpacks WHICH aspect of communication the student feels weak in.",
+        "Should NOT assume ALL communication is poor based on the student's broad statement."
+      ],
+
+      "expected_profile_outcome": {
+        "COM1_classification": "possible_hidden_strength OR developing_picture",
+        "COM1_must_NOT_be": "still_taking_shape (evidence exists)",
+        "COM2_classification": "developing_picture",
+        "heard_summary_should_include": "Your responses suggest you may have more experience in idea communication than you give yourself credit for.",
+        "must_NOT_contain": ["bad at communication overall", "weak communicator"]
+      }
+    },
+
+    {
+      "persona_id": "TEST06",
+      "title": "Independent preference but good teamwork",
+      "description": "A student who prefers working independently but demonstrates strong team contribution skills. The system must keep preference and capability separate — preferring independence does NOT mean poor teamwork.",
+
+      "key_response_pattern": {
+        "context": { "major": "Computer Science", "year": 2, "country": "Singapore" },
+        "Q01_options": ["A", "B"],
+        "Q02_options": ["C", "E"],
+        "Q06_options": ["A"],
+        "Q07_options": ["C"],
+        "Q08_options": ["B"],
+        "Q13_options": ["A"],
+        "Q14_options": ["B"],
+        "Q20_options": ["A"],
+        "Q21_options": ["B"],
+        "Q27_options": ["A"],
+        "Q27_note": "Strong independence — works alone effectively",
+        "Q28_options": ["A"],
+        "Q34_options": ["B"],
+        "Q35_options": ["A"],
+        "Q35_note": "Strong team contribution despite preference for independence (strength 0.70, COM2)",
+        "Q41_options": ["B"],
+        "Q45_options": ["B"],
+        "Q47_options": ["C"],
+        "Q47_note": "Prefers independent, self-directed learning",
+        "Q49_options": ["C"],
+        "Q49_note": "Prefers solo exploration over group study"
+      },
+
+      "expected_signal_state": {
+        "COM2": { "experience_strength_range": [0.45, 0.72], "coverage": "partial" },
+        "EXEC1": { "experience_strength_range": [0.50, 0.75], "coverage": "partial" },
+        "PREF1": { "values_include": ["independent", "self_directed"] },
+        "note": "PREF1 values must NOT influence COM2 experience_strength"
+      },
+
+      "expected_adaptive_behaviour": [
+        "System should NOT flag 'prefers independence' as a teamwork concern.",
+        "No contradiction should be raised between PREF1 and COM2.",
+        "Preference and capability must remain in separate sections."
+      ],
+
+      "expected_profile_outcome": {
+        "preferences_learning_approach_primary": "independent or self_directed",
+        "COM2_classification": "developing_picture OR supported_strength",
+        "COM2_must_NOT_be": "worth_validating or still_taking_shape (evidence exists)",
+        "must_NOT_contain": ["poor teamwork", "avoids collaboration"],
+        "validation_VR02": "Preference never affected capability strength"
+      }
+    },
+
+    {
+      "persona_id": "TEST07",
+      "title": "Contradictory behaviour",
+      "description": "A student who gives one answer suggesting strong problem framing and another suggesting heavy dependency on external direction. The system should flag mixed consistency and trigger adaptive clarification.",
+
+      "key_response_pattern": {
+        "context": { "major": "Electrical Engineering", "year": 2, "country": "UK" },
+        "Q01_options": ["D", "G"],
+        "Q02_options": ["B", "E"],
+        "Q06_options": ["B"],
+        "Q07_options": ["A"],
+        "Q08_options": ["B"],
+        "Q13_options": ["A"],
+        "Q13_note": "Strong problem framing — decomposes into sub-problems (strength 0.80, PS1, positive)",
+        "Q14_options": ["D"],
+        "Q14_note": "Strong systematic debugging (PS2, positive)",
+        "Q20_options": ["B"],
+        "Q21_options": ["C"],
+        "Q21_note": "Sticks with one approach — doesn't adapt (LEARN2, developing, strength 0.30)",
+        "Q27_options": ["C"],
+        "Q27_note": "Needs guidance for complex tasks (EXEC1, developing, strength 0.35)",
+        "Q28_options": ["B"],
+        "Q34_options": ["B"],
+        "Q35_options": ["B"],
+        "Q41_options": ["C"],
+        "Q41_note": "Follows given priorities rather than setting own (MGMT1, developing)",
+        "Q45_options": ["B"],
+        "Q47_options": ["B"],
+        "Q49_options": ["A"],
+        "contextual_Q15_options": ["B"],
+        "contextual_Q15_note": "If asked: relies on step-by-step guides when troubleshooting (contradicts Q14 strong debugging)"
+      },
+
+      "expected_signal_state": {
+        "PS1": { "experience_strength_range": [0.50, 0.80], "consistency": "mixed or high (depends on whether contextual Q adds data)" },
+        "EXEC1": { "experience_strength_range": [0.15, 0.40], "consistency": "insufficient (only 1 observation)" },
+        "note": "If contextual questions reveal conflicting PS2 evidence, consistency should drop to 'mixed' or 'low'",
+        "expected_contradictions": ["CR03 — opposing observations for PS2 if contextual question contradicts core"]
+      },
+
+      "expected_adaptive_behaviour": [
+        "System should detect mixed/low consistency in PS2 if contextual answer contradicts core.",
+        "Should prioritise adaptive question to clarify whether behaviour is context-dependent.",
+        "Should NOT average contradictory signals into a misleading moderate score."
+      ],
+
+      "expected_profile_outcome": {
+        "PS1_classification": "developing_picture",
+        "EXEC1_classification": "still_taking_shape OR developing_picture",
+        "if_PS2_contradicted": {
+          "PS2_consistency": "low or mixed",
+          "PS2_classification": "developing_picture",
+          "PS2_must_NOT_be": "supported_strength (contradictory evidence)"
+        },
+        "must_NOT_contain": ["confused", "unreliable"]
+      }
+    },
+
+    {
+      "persona_id": "TEST08",
+      "title": "Sparse profile",
+      "description": "A student who answers the minimum number of questions and several areas remain unknown. The system should preserve unknown areas rather than inventing conclusions.",
+
+      "key_response_pattern": {
+        "context": { "major": "Civil Engineering", "year": 1, "country": "Indonesia" },
+        "Q01_options": ["H"],
+        "Q02_options": ["A"],
+        "Q06_options": ["B"],
+        "Q07_options": ["C"],
+        "Q08_options": ["B"],
+        "Q13_options": ["B"],
+        "Q14_options": ["B"],
+        "Q20_options": ["B"],
+        "Q21_note": "SKIPPED",
+        "Q27_options": ["B"],
+        "Q28_note": "SKIPPED",
+        "Q34_note": "SKIPPED",
+        "Q35_note": "SKIPPED",
+        "Q41_options": ["B"],
+        "Q45_note": "SKIPPED",
+        "Q47_options": ["A"],
+        "Q49_note": "SKIPPED",
+        "note": "Student answers 10 questions and skips several. Hard maximum not reached but coverage is low."
+      },
+
+      "expected_signal_state": {
+        "COM1": { "coverage": "unobserved" },
+        "COM2": { "coverage": "unobserved" },
+        "MGMT2": { "coverage": "unobserved" },
+        "EXEC2": { "coverage": "unobserved" },
+        "LEARN2": { "coverage": "unobserved" },
+        "most_observed_signals": { "coverage": "insufficient or partial" }
+      },
+
+      "expected_adaptive_behaviour": [
+        "System may ask 1-2 contextual questions targeting highest-value unknowns.",
+        "System should NOT force 20 questions just to fill coverage.",
+        "If minimum coverage cannot be met, stop and report honestly."
+      ],
+
+      "expected_profile_outcome": {
+        "unknowns_populated": ["COM1", "COM2", "MGMT2", "EXEC2", "LEARN2"],
+        "completion_status": "incomplete OR complete with remaining unknowns",
+        "completion_reason": "insufficient_responses OR minimum_coverage_met",
+        "must_NOT_contain": ["fabricated conclusions for unobserved signals", "0.0 experience_strength as 'weak'"],
+        "validation_VR01": "Unobserved signals have experience_strength null, not 0.0",
+        "validation_VR06": "All unobserved/insufficient signals appear in unknowns array"
+      }
+    }
+  ],
+
+  "validation_test_matrix": {
+    "_doc": "Quick-reference matrix showing which validation rules each test persona exercises.",
+    "VR01_no_evidence_not_zero":          ["TEST03", "TEST08"],
+    "VR02_preferences_not_capability":    ["TEST06"],
+    "VR03_confidence_not_evidence":       ["TEST01", "TEST02"],
+    "VR04_one_response_not_high_conf":    ["TEST03", "TEST08"],
+    "VR05_low_conf_stays_uncertain":      ["TEST03", "TEST07"],
+    "VR06_unknowns_preserved":            ["TEST03", "TEST08"],
+    "VR07_sources_traceable":             ["TEST01", "TEST04", "TEST05"],
+    "VR08_llm_clarification_lower":       ["any persona if LLM clarification triggered"],
+    "VR09_hard_max_respected":            ["TEST08 edge case"],
+    "VR10_no_careers":                    ["all"],
+    "VR11_no_growth_plans":               ["all"],
+    "VR12_no_personality_types":          ["all"],
+    "VR13_no_overall_score":              ["all"],
+    "VR14_no_ranking":                    ["all"],
+    "VR15_explainable_reflections":       ["TEST01", "TEST02", "TEST04", "TEST05"]
+  }
+}

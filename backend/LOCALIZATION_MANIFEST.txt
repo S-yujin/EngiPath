@@ -1,0 +1,31 @@
+Engipath complete backend package - 2026-11-03
+Original archive entries: 161
+Original files preserved (exact byte-for-byte): 123
+Original files modified for localization/test/UTF8/Gemini example: 10
+New files: 4 plus this manifest
+
+MODIFIED ORIGINAL PATHS:
+backend/.env.example
+backend/app/i18n_questionnaire.py
+backend/app/questionnaire/pipeline.py
+backend/app/services/career_service.py
+backend/app/services/gap_service.py
+backend/app/services/planning_service.py
+backend/app/services/questionnaire_service.py
+backend/app/services/reflection_service.py
+backend/requirements.txt
+backend/tests/test_chat_service.py
+
+NEW PATHS:
+backend/app/i18n_outputs.py
+backend/tests/test_i18n_backend.py
+backend/app/data/processed/occupations.jsonl
+backend/README_6개언어_전체본.md
+backend/LOCALIZATION_MANIFEST.txt
+
+All original archive members are retained in the ZIP.
+The original SQLite DB was preserved byte-for-byte and may contain old demo/test data.
+If replacing an existing local backend, copy your CURRENT .env and engipath.db back.
+No real Gemini API key is included.
+
+SHA256 original backend.zip: 655ca8e7c8c2d6dd843569b3894fa40b29827866f033200fbdb1bb5baf17ae63

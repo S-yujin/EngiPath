@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Engipath — Clean Hero & Light Path Transition</title>
+  
+  <!-- Google Fonts: Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background-color: #FAF9FC;
+      color: #1f2937;
+      overflow-x: hidden;
+    }
+
+    /* 1. Pure Hero Section (No Text Words, Just WanTu Logo & Matrix) */
+    #hero-section {
+      position: relative;
+      min-height: 100vh;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      user-select: none;
+      padding: 3rem 1.5rem;
+      background: #FAF9FC;
+      overflow: hidden;
+    }
+
+    /* Matrix "Engipath" Canvas */
+    #matrix-canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0.8;
+    }
+
+    /* Real-Time Light Canvas */
+    #light-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 15;
+    }
+
+    /* Centered WanTu Logo (Dissolves into lines as scroll starts) */
+    #core-container {
+      position: relative;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin: auto;
+      text-align: center;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .logo-wrapper {
+      width: 240px;
+      height: 240px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: floatLogo 3.2s ease-in-out infinite;
+      filter: drop-shadow(0 15px 30px rgba(147, 51, 234, 0.18));
+    }
+
+    @keyframes floatLogo {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); filter: drop-shadow(0 25px 45px rgba(168, 85, 247, 0.32)); }
+    }
+
+    .logo-img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    /* Bottom Scroll Cue */
+    #scroll-cue {
+      position: relative;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+      cursor: pointer;
+      color: #6b21a8;
+      transition: opacity 0.3s ease;
+    }
+
+    .arrow-box {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid rgba(168, 85, 247, 0.35);
+      box-shadow: 0 8px 25px rgba(168, 85, 247, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #7e22ce;
+      animation: bounceArrow 1.8s ease-in-out infinite;
+    }
+
+    @keyframes bounceArrow {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(7px); }
+    }
+
+    .arrow-icon {
+      width: 18px;
+      height: 18px;
+      stroke-width: 2.5;
+    }
+
+    /* 2. Main Website Section (Clean Background) */
+    #website-content {
+      position: relative;
+      z-index: 20;
+      min-height: 100vh;
+      background: #FAF9FC;
+      padding: 5rem 2rem;
+    }
+
+    .content-wrapper {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid #e2e8f0;
+      margin-bottom: 3rem;
+    }
+
+    .logo-group {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .nav-logo-img {
+      width: 40px;
+      height: 40px;
+      object-fit: contain;
+    }
+
+    .brand-title {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: #0f172a;
+    }
+
+    .badge-secondary {
+      font-size: 0.75rem;
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      background: #f1f5f9;
+      color: #475569;
+      font-weight: 600;
+      border: 1px solid #e2e8f0;
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .career-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 1.25rem;
+      padding: 1.75rem;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .career-card:hover {
+      transform: translateY(-4px);
+      border-color: #3b82f6;
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+    }
+
+    .card-icon {
+      font-size: 2rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .card-title {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #0f172a;
+      margin-bottom: 0.5rem;
+    }
+
+    .card-desc {
+      font-size: 0.85rem;
+      color: #64748b;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 1. Pure Hero Section -->
+  <section id="hero-section">
+    <canvas id="matrix-canvas"></canvas>
+    <canvas id="light-canvas"></canvas>
+
+    <div></div> <!-- Spacer -->
+
+    <div id="core-container" onclick="scrollToCareers()">
+      <div class="logo-wrapper">
+        <img src="/engipath-mark.svg" alt="Wan Tu Logo" class="logo-img">
+      </div>
+    </div>
+
+    <div id="scroll-cue" onclick="scrollToCareers()">
+      <div class="arrow-box">
+        <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 13.5L12 21m0 0l-7.5-7.5M12 21V3" />
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. Main Website Section -->
+  <section id="website-content">
+    <div class="content-wrapper">
+      <header class="navbar">
+        <div class="logo-group">
+          <img src="/engipath-mark.svg" alt="Engipath Logo" class="nav-logo-img">
+          <span class="brand-title">Engipath</span>
+          <span class="badge-secondary">Engipath</span>
+        </div>
+        <div class="badge-secondary">
+          Step 1: Dream Job Hook
+        </div>
+      </header>
+
+      <div style="text-align: center; max-width: 700px; margin: 0 auto 3rem;">
+        <h2 style="font-size: 2.25rem; font-weight: 800; color: #0f172a; margin-bottom: 0.75rem;">
+          Where do you want your engineering degree to take you?
+        </h2>
+        <p style="color: #64748b; font-size: 1rem; line-height: 1.6;">
+          Select an aspirational engineering blueprint below. We calibrate your baseline in under 90 seconds and generate your personalized 3-step action plan.
+        </p>
+      </div>
+
+      <div class="cards-grid">
+        <div class="career-card">
+          <div class="card-icon">🤖</div>
+          <h3 class="card-title">Robotics Engineer</h3>
+          <p class="card-desc">Design autonomous robotic systems, inverse kinematics, and perception pipelines.</p>
+        </div>
+        <div class="career-card">
+          <div class="card-icon">🚀</div>
+          <h3 class="card-title">Aerospace Propulsion</h3>
+          <p class="card-desc">Pioneer next-gen rocket engines, orbital mechanics, and thermal fluid dynamics.</p>
+        </div>
+        <div class="career-card">
+          <div class="card-icon">⚡</div>
+          <h3 class="card-title">Sustainable Energy Analyst</h3>
+          <p class="card-desc">Model renewable microgrids, grid battery storage, and carbon-zero power distribution.</p>
+        </div>
+        <div class="career-card">
+          <div class="card-icon">🧠</div>
+          <h3 class="card-title">AI Hardware Designer</h3>
+          <p class="card-desc">Architect custom neural accelerators (NPUs), silicon photonics, and high-bandwidth memory.</p>
+        </div>
+        <div class="career-card">
+          <div class="card-icon">🩺</div>
+          <h3 class="card-title">Biomedical Device Creator</h3>
+          <p class="card-desc">Develop biocompatible implants, smart prosthetic interfaces, and diagnostic microfluidics.</p>
+        </div>
+        <div class="career-card">
+          <div class="card-icon">🏗️</div>
+          <h3 class="card-title">Smart Infrastructure Architect</h3>
+          <p class="card-desc">Integrate IoT telemetry, structural monitoring, and resilient transport systems.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. Minimal, Sleek Canvas Engines -->
+  <script>
+    function scrollToCareers() {
+      document.getElementById('website-content').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // A. MATRIX "Engipath" BACKGROUND
+    const matrixCanvas = document.getElementById('matrix-canvas');
+    const mCtx = matrixCanvas.getContext('2d');
+    let mW = matrixCanvas.width = window.innerWidth;
+    let mH = matrixCanvas.height = window.innerHeight;
+
+    const chars = '0123456789ABCDEFEngipath';
+    const charArray = chars.split('');
+    const fontSize = 14;
+    let columns = Math.floor(mW / fontSize);
+    let drops = Array(columns).fill(1);
+
+    function drawMatrix() {
+      mCtx.fillStyle = 'rgba(250, 249, 252, 0.12)';
+      mCtx.fillRect(0, 0, mW, mH);
+
+      mCtx.font = fontSize + 'px "JetBrains Mono", monospace';
+      for (let i = 0; i < drops.length; i++) {
+        const text = charArray[Math.floor(Math.random() * charArray.length)];
+        mCtx.fillStyle = 'rgba(168, 85, 247, 0.2)';
+        mCtx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+        if (drops[i] * fontSize > mH && Math.random() > 0.975) {
+          drops[i] = 0;
+        }
+        drops[i]++;
+      }
+    }
+    setInterval(drawMatrix, 50);
+
+    // B. REAL-TIME CLEAN LIGHT PATHS + WHITE RESET
+    const lightCanvas = document.getElementById('light-canvas');
+    const lCtx = lightCanvas.getContext('2d');
+    const coreContainer = document.getElementById('core-container');
+    const scrollCue = document.getElementById('scroll-cue');
+    let lW = lightCanvas.width = window.innerWidth;
+    let lH = lightCanvas.height = window.innerHeight;
+
+    window.addEventListener('resize', () => {
+      mW = matrixCanvas.width = lW = lightCanvas.width = window.innerWidth;
+      mH = matrixCanvas.height = lH = lightCanvas.height = window.innerHeight;
+      columns = Math.floor(mW / fontSize);
+      drops = Array(columns).fill(1);
+    });
+
+    const sideLines = [
+      { endAngle: -Math.PI * 0.95, ctrlX: -140, ctrlY: -100, maxDist: lW * 0.75, color: '#c084fc' },
+      { endAngle: -Math.PI * 1.05, ctrlX: -180, ctrlY: 20, maxDist: lW * 0.85, color: '#818cf8' },
+      { endAngle: -Math.PI * 0.7, ctrlX: -100, ctrlY: -160, maxDist: lW * 0.65, color: '#a855f7' },
+      { endAngle: -Math.PI * 0.05, ctrlX: 140, ctrlY: -100, maxDist: lW * 0.75, color: '#c084fc' },
+      { endAngle: 0.05, ctrlX: 180, ctrlY: 20, maxDist: lW * 0.85, color: '#818cf8' },
+      { endAngle: -Math.PI * 0.3, ctrlX: 100, ctrlY: -160, maxDist: lW * 0.65, color: '#a855f7' },
+    ];
+
+    let localProg = 0;
+    let targetProg = 0;
+
+    function handleScroll() {
+      const scrollY = window.scrollY;
+      const heroHeight = window.innerHeight * 0.9;
+      const prog = Math.min(1, Math.max(0, scrollY / heroHeight));
+      targetProg = prog;
+
+      if (coreContainer) {
+        coreContainer.style.opacity = Math.max(0, 1 - prog * 2.8);
+        coreContainer.style.transform = `scale(${1 + prog * 0.3}) translateY(-${prog * 30}px)`;
+        coreContainer.style.filter = `blur(${prog * 6}px)`;
+      }
+      if (scrollCue) {
+        scrollCue.style.opacity = Math.max(0, 1 - prog * 3.0);
+      }
+    }
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+
+    function renderLightPaths() {
+      localProg += (targetProg - localProg) * 0.18;
+      lCtx.clearRect(0, 0, lW, lH);
+
+      const centerX = lW / 2;
+      const centerY = lH * 0.46;
+
+      // 1. Clean White Reset
+      if (localProg > 0.1) {
+        const whiteOpacity = Math.min(1, Math.max(0, (localProg - 0.15) / 0.55));
+        lCtx.fillStyle = `rgba(250, 249, 252, ${whiteOpacity})`;
+        lCtx.fillRect(0, 0, lW, lH);
+      }
+
+      // 2. Few Clean Side Lines (Quickly exit off-screen)
+      if (localProg > 0.01 && localProg < 0.7) {
+        const lineProg = Math.min(1, localProg * 2.5);
+        const lineAlpha = localProg < 0.25 ? 1 : Math.max(0, 1 - (localProg - 0.25) / 0.35);
+
+        lCtx.save();
+        lCtx.globalAlpha = lineAlpha;
+
+        sideLines.forEach((line) => {
+          const endX = centerX + Math.cos(line.endAngle) * line.maxDist * lineProg;
+          const endY = centerY + Math.sin(line.endAngle) * line.maxDist * lineProg;
+          const cX = centerX + line.ctrlX * lineProg;
+          const cY = centerY + line.ctrlY * lineProg;
+
+          lCtx.beginPath();
+          lCtx.moveTo(centerX, centerY);
+          lCtx.quadraticCurveTo(cX, cY, endX, endY);
+          lCtx.strokeStyle = line.color;
+          lCtx.lineWidth = 2.0;
+          lCtx.shadowColor = line.color;
+          lCtx.shadowBlur = 10;
+          lCtx.stroke();
+        });
+        lCtx.restore();
+      }
+
+      // 3. One Highlighted Purple Path Downward
+      if (localProg > 0.01) {
+        const downProg = Math.min(1, localProg * 1.25);
+        const startY = centerY + 10;
+        const endY = startY + (lH - startY + 60) * downProg;
+        const mainLineAlpha = localProg < 0.88 ? 1 : Math.max(0, 1 - (localProg - 0.88) / 0.12);
+
+        if (mainLineAlpha > 0.01) {
+          lCtx.save();
+          lCtx.globalAlpha = mainLineAlpha;
+
+          lCtx.beginPath();
+          lCtx.moveTo(centerX, startY);
+          lCtx.lineTo(centerX, endY);
+          lCtx.strokeStyle = 'rgba(168, 85, 247, 0.35)';
+          lCtx.lineWidth = 10;
+          lCtx.shadowColor = '#9333ea';
+          lCtx.shadowBlur = 20;
+          lCtx.stroke();
+
+          lCtx.beginPath();
+          lCtx.moveTo(centerX, startY);
+          lCtx.lineTo(centerX, endY);
+          lCtx.strokeStyle = '#9333ea';
+          lCtx.lineWidth = 3.5;
+          lCtx.shadowColor = '#c084fc';
+          lCtx.shadowBlur = 8;
+          lCtx.stroke();
+
+          lCtx.beginPath();
+          lCtx.moveTo(centerX, startY);
+          lCtx.lineTo(centerX, endY);
+          lCtx.strokeStyle = '#ffffff';
+          lCtx.lineWidth = 1.5;
+          lCtx.stroke();
+
+          lCtx.beginPath();
+          lCtx.arc(centerX, endY, 4, 0, Math.PI * 2);
+          lCtx.fillStyle = '#ffffff';
+          lCtx.shadowColor = '#a855f7';
+          lCtx.shadowBlur = 12;
+          lCtx.fill();
+
+          lCtx.restore();
+        }
+      }
+
+      requestAnimationFrame(renderLightPaths);
+    }
+    renderLightPaths();
+  </script>
+</body>
+</html>

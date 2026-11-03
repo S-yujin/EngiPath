@@ -1,0 +1,273 @@
+"""Six-language display text for deterministic questionnaire service messages."""
+from app.i18n import msg
+from app.llm.locale import get_language
+
+CHECKPOINT_MESSAGES = {
+    "ko": ("지금까지의 답변을 바탕으로 정리한 분석 결과예요.", "이 분석이 현재 자신을 잘 반영하고 있나요?"),
+    "en": ("Here is what I've gathered from your answers so far.", "Does this analysis reflect how you see yourself?"),
+    "zh": ("这是根据你目前的回答整理出的分析结果。", "这份分析符合你对自己的认识吗？"),
+    "es": ("Este es el análisis basado en tus respuestas hasta ahora.", "¿Este análisis refleja cómo te ves?"),
+    "fr": ("Voici l'analyse fondée sur tes réponses jusqu'à présent.", "Cette analyse reflète-t-elle la façon dont tu te perçois ?"),
+    "de": ("Hier ist die Analyse auf Grundlage deiner bisherigen Antworten.", "Spiegelt diese Analyse deine Selbsteinschätzung wider?"),
+}
+
+TEXTS = {
+    "initial_bridge": {
+        "ko": "{major}을(를) 공부하면서 {skill} 역량을 쌓고 {job} 분야를 목표로 하고 계시네요. 먼저 관심사와 동기를 살펴볼게요.",
+        "en": "Welcome! With your background in {major}, your {skill} skills, and your goal of {job}, let's explore your interests and motivation.",
+        "zh": "你正在学习{major}，具备{skill}相关技能，并以{job}为目标。先来了解你的兴趣和动力。",
+        "es": "Estudias {major}, tienes habilidades en {skill} y aspiras a {job}. Empecemos por tus intereses y motivación.",
+        "fr": "Tu étudies {major}, développes tes compétences en {skill} et vises {job}. Explorons tes intérêts et ta motivation.",
+        "de": "Du studierst {major}, entwickelst Fähigkeiten in {skill} und strebst {job} an. Beginnen wir mit deinen Interessen und deiner Motivation.",
+    },
+    "initial_insight": {
+        "ko": "{major} 전공과 {job} 목표에 맞춰 첫 진단을 시작합니다.",
+        "en": "Initial calibration for {major} toward {job}.",
+        "zh": "开始针对{major}和{job}目标的初步分析。",
+        "es": "Iniciamos la evaluación inicial de {major} para {job}.",
+        "fr": "Début de l'analyse initiale de {major} pour viser {job}.",
+        "de": "Die erste Analyse für {major} mit dem Ziel {job} beginnt.",
+    },
+    "adaptive_low": {
+        "ko": "앞서 선택한 답변에서 스스로 생각한 것보다 강한 문제 해결 능력이 보였어요. 실제 상황에서 다시 살펴볼게요.",
+        "en": "Your earlier choices suggest stronger problem-solving skills than you initially described. Let's explore that more closely.",
+        "zh": "之前的选择表明，你的解决问题能力可能比你最初认为的更强。让我们进一步了解。",
+        "es": "Tus respuestas anteriores sugieren más capacidad para resolver problemas de la que creías. Vamos a comprobarlo.",
+        "fr": "Tes réponses précédentes suggèrent de meilleures aptitudes à résoudre des problèmes que tu ne le pensais. Explorons-les.",
+        "de": "Deine bisherigen Antworten deuten auf stärkere Problemlösungsfähigkeiten hin, als du selbst annimmst. Schauen wir genauer hin.",
+    },
+    "adaptive_high": {
+        "ko": "자신감이 높다고 답했지만 앞서 선택한 문제 해결 방식은 조금 탐색적이었어요. 실제 조건에서 어떻게 대응할지 살펴볼게요.",
+        "en": "You reported high confidence, but an earlier choice took an exploratory approach. Let's test how you handle a practical scenario.",
+        "zh": "你表示很有信心，但之前的回答更偏向探索性方法。我们来看看你在实际情境中的表现。",
+        "es": "Mostraste confianza, pero una respuesta anterior fue más exploratoria. Veamos cómo abordarías una situación real.",
+        "fr": "Tu as exprimé de l'assurance, mais une réponse précédente était plus exploratoire. Voyons comment tu réagirais en situation réelle.",
+        "de": "Du hast großes Selbstvertrauen gezeigt, aber eine frühere Wahl war eher explorativ. Sehen wir uns eine praktische Situation an.",
+    },
+    "adaptive_low_insight": {
+        "ko": "숨겨진 강점 점검: 실제 선택과 자기 평가를 비교합니다.",
+        "en": "Hidden strength check: comparing demonstrated choices with self-assessment.",
+        "zh": "潜在优势分析：比较实际选择与自我评估。",
+        "es": "Fortalezas ocultas: comparación de las respuestas con la autoevaluación.",
+        "fr": "Forces potentielles : comparaison des réponses et de l'autoévaluation.",
+        "de": "Verborgene Stärken: Abgleich von Entscheidungen und Selbsteinschätzung.",
+    },
+    "adaptive_high_insight": {
+        "ko": "심화 점검: 실제 제약 속에서의 문제 해결 방식을 확인합니다.",
+        "en": "Deep-dive check: testing problem solving under real constraints.",
+        "zh": "深入分析：考察实际约束下的问题解决方式。",
+        "es": "Análisis profundo: resolución de problemas con limitaciones reales.",
+        "fr": "Analyse approfondie : résolution de problèmes sous contraintes réelles.",
+        "de": "Vertiefung: Problemlösung unter realen Einschränkungen.",
+    },
+    "midpoint_summary": {
+        "ko": "진단 중간 점검(50%): 기본 역량을 파악했어요. {strength} 분야에서 강점이 관찰됩니다. 나머지 질문은 {job} 직무에 맞춰 실행력, 의사소통, 문제 대응력을 살펴봅니다.",
+        "en": "Midpoint check (50%): Your initial profile is mapped. We observed strengths in {strength}. The remaining questions focus on execution, communication, and resilience for {job}.",
+        "zh": "中期检查（50%）：已建立基础画像。你在{strength}方面表现出优势。后续问题将围绕{job}所需的执行力、沟通能力和应对挫折的能力。",
+        "es": "Revisión intermedia (50%): ya tenemos tu perfil inicial. Observamos fortalezas en {strength}. Las siguientes preguntas se centran en ejecución, comunicación y resiliencia para {job}.",
+        "fr": "Bilan intermédiaire (50 %) : ton profil initial est établi. Nous observons des points forts en {strength}. Les prochaines questions portent sur l'exécution, la communication et la résilience pour {job}.",
+        "de": "Zwischenstand (50 %): Dein Ausgangsprofil ist erstellt. Stärken zeigen sich bei {strength}. Die nächsten Fragen prüfen Umsetzung, Kommunikation und Belastbarkeit für {job}.",
+    },
+    "midpoint_archetype": {
+        "ko": "경험 기반 문제 해결형", "en": "Experience-Based Problem Solver",
+        "zh": "实践型问题解决者", "es": "Solucionador práctico de problemas",
+        "fr": "Résolution pratique de problèmes", "de": "Praxisorientierter Problemlöser",
+    },
+    "midpoint_focus": {
+        "ko": "{job} 직무에 필요한 실무 수행력과 팀 소통 능력을 살펴봅니다.",
+        "en": "Examining practical execution and team communication for {job}.",
+        "zh": "考察{job}岗位所需的实践执行力和团队沟通能力。",
+        "es": "Evaluamos la ejecución práctica y la comunicación en equipo para {job}.",
+        "fr": "Nous évaluons l'exécution pratique et la communication d'équipe pour {job}.",
+        "de": "Wir prüfen praktische Umsetzung und Teamkommunikation für {job}.",
+    },
+    "midpoint_bridge": {
+        "ko": "전반부 다섯 문항을 완료했어요. 이제 {job} 직무와 관련된 실제 수행 경험을 살펴볼게요.",
+        "en": "You completed the first five questions! Now let's explore your practical experience related to {job}.",
+        "zh": "你已完成前五个问题！现在来了解与{job}相关的实践经验。",
+        "es": "¡Has completado las primeras cinco preguntas! Veamos tu experiencia práctica en {job}.",
+        "fr": "Tu as terminé les cinq premières questions ! Explorons ton expérience pratique liée à {job}.",
+        "de": "Du hast die ersten fünf Fragen abgeschlossen! Nun sehen wir uns deine Praxiserfahrung für {job} an.",
+    },
+    "midpoint_insight": {
+        "ko": "AI 멘토 분석: {job}에 맞게 다음 질문을 조정했어요.",
+        "en": "AI mentor: the next questions have been tailored to {job}.",
+        "zh": "AI 导师：后续问题已根据{job}调整。",
+        "es": "Mentor de IA: adaptamos las siguientes preguntas a {job}.",
+        "fr": "Mentor IA : les prochaines questions sont adaptées à {job}.",
+        "de": "KI-Mentor: Die nächsten Fragen sind auf {job} abgestimmt.",
+    },
+    "cycle_insight": {
+        "ko": "{cycle}차 탐색: 최근 프로젝트 경험을 반영하여 {dimension}을(를) 점검합니다.",
+        "en": "Cycle {cycle}: checking {dimension} using your recent project experience.",
+        "zh": "第{cycle}轮：结合近期项目经验分析{dimension}。",
+        "es": "Ciclo {cycle}: revisamos {dimension} según tu experiencia reciente.",
+        "fr": "Cycle {cycle} : analyse de {dimension} selon ton projet récent.",
+        "de": "Zyklus {cycle}: Wir prüfen {dimension} anhand deiner aktuellen Projekterfahrung.",
+    },
+    "note_bridge": {
+        "ko": "말씀해 주신 ‘{note}’ 경험을 반영해서 다음 질문을 이어갈게요.",
+        "en": "Thanks for sharing ‘{note}’. Let's build on that experience.",
+        "zh": "感谢分享“{note}”，我们继续从这段经验出发。",
+        "es": "Gracias por compartir «{note}». Continuemos a partir de esa experiencia.",
+        "fr": "Merci pour ton témoignage «{note}». Poursuivons à partir de cette expérience.",
+        "de": "Danke für „{note}“. Darauf bauen wir nun auf.",
+    },
+    "note_insight": {
+        "ko": "사용자가 제공한 추가 경험을 진단에 반영합니다.",
+        "en": "Your additional context will inform the assessment.",
+        "zh": "你的补充经历将纳入分析。",
+        "es": "Tu contexto adicional se tendrá en cuenta en el análisis.",
+        "fr": "Nous prendrons en compte ton contexte supplémentaire.",
+        "de": "Deine zusätzlichen Angaben werden in die Analyse einbezogen.",
+    },
+    "choice_bridge": {
+        "ko": "‘{choice}’을(를) 선택하셨군요. 다음 상황에서는 어떻게 대응할지 살펴볼게요.",
+        "en": "I see you chose ‘{choice}’. Let's explore how that carries into the next situation.",
+        "zh": "你选择了“{choice}”。我们来看看你在下一种情境下会如何应对。",
+        "es": "Elegiste «{choice}». Veamos cómo actuarías en el siguiente escenario.",
+        "fr": "Tu as choisi «{choice}». Voyons comment tu réagirais à la prochaine situation.",
+        "de": "Du hast „{choice}“ gewählt. Sehen wir uns die nächste Situation an.",
+    },
+    "next_bridge": {
+        "ko": "좋은 답변이에요. 이제 {major} 분야의 다음 역량을 살펴볼게요.",
+        "en": "Good reflection. Let's move to the next {major} capability.",
+        "zh": "回答得很好。接下来我们看看{major}领域的另一项能力。",
+        "es": "Buena reflexión. Pasemos a la siguiente competencia de {major}.",
+        "fr": "Bonne réflexion. Passons à la compétence suivante en {major}.",
+        "de": "Gute Überlegung. Schauen wir uns die nächste Fähigkeit im Bereich {major} an.",
+    },
+    "tracking_insight": {
+        "ko": "적응형 역량 분석: {job} 목표에 따라 결과를 업데이트합니다.",
+        "en": "Adaptive assessment: updating competency signals for {job}.",
+        "zh": "自适应分析：根据{job}目标更新能力指标。",
+        "es": "Evaluación adaptativa: actualizamos las competencias para {job}.",
+        "fr": "Évaluation adaptative : mise à jour des compétences pour {job}.",
+        "de": "Adaptive Analyse: Aktualisierung der Kompetenzwerte für {job}.",
+    },
+    "portrait_summary": {
+        "ko": "현재 응답과 경험을 근거로 정리한 역량 분석이에요. 강점과 발전 가능성을 함께 보여줍니다.",
+        "en": "Here is your evidence-based capability portrait, reflecting your experiences, strengths, and growth opportunities.",
+        "zh": "这是基于你的回答和经验形成的能力画像，展示了优势与成长方向。",
+        "es": "Este es tu perfil basado en evidencias, con tus fortalezas y oportunidades de crecimiento.",
+        "fr": "Voici ton portrait fondé sur des éléments concrets, présentant tes forces et tes possibilités de progrès.",
+        "de": "Hier ist dein evidenzbasiertes Kompetenzprofil mit deinen Stärken und Entwicklungsmöglichkeiten.",
+    },
+    "portrait_refinement": {
+        "ko": " (추가 의견 반영: ‘{note}’)",
+        "en": " (Incorporating your reflection note: ‘{note}’)",
+        "zh": "（已考虑你的补充意见：“{note}”）",
+        "es": " (Incluyendo tu comentario: «{note}»)",
+        "fr": " (Avec ton commentaire : «{note}»)",
+        "de": " (Mit deiner Ergänzung: „{note}“)",
+    },
+    "portrait_cycle": {
+        "ko": "{cycle}차 탐색 · ", "en": "Cycle {cycle} · ", "zh": "第{cycle}轮 · ",
+        "es": "Ciclo {cycle} · ", "fr": "Cycle {cycle} · ", "de": "Zyklus {cycle} · ",
+    },
+    "portrait_supported": {
+        "ko": "{label} 분야의 강점은 {sources}에서 확인할 수 있어요. 실제 응답이 역량을 뒷받침합니다.",
+        "en": "Your strength in {label} is supported by {sources}.",
+        "zh": "{sources}支持你在{label}方面的优势。",
+        "es": "Tu fortaleza en {label} está respaldada por {sources}.",
+        "fr": "Ton point fort en {label} est étayé par {sources}.",
+        "de": "Deine Stärke bei {label} wird durch {sources} gestützt.",
+    },
+    "portrait_hidden": {
+        "ko": "{label}에 대해 조심스럽게 평가했지만 {sources}에서 실제 경험이 나타나요. 숨겨진 강점일 수 있어요.",
+        "en": "You assessed {label} cautiously, but {sources} suggests hands-on experience. This may be an overlooked strength.",
+        "zh": "你对{label}的评价较谨慎，但{sources}表明你有实际经验。这可能是尚未发现的优势。",
+        "es": "Evaluaste {label} con cautela, pero {sources} muestra experiencia práctica. Puede ser una fortaleza oculta.",
+        "fr": "Tu as évalué {label} avec prudence, mais {sources} témoigne d'une expérience concrète. Cela peut être une force sous-estimée.",
+        "de": "Du schätzt {label} vorsichtig ein, aber {sources} zeigt praktische Erfahrung. Hier könnte eine verborgene Stärke liegen.",
+    },
+    "portrait_validate": {
+        "ko": "{label}에 대한 자신감이 보여요. 향후 프로젝트 경험을 통해 실제 역량을 더 확인할 수 있어요.",
+        "en": "You feel confident about {label}. Future projects can help validate this strength with more evidence.",
+        "zh": "你对{label}很有信心。未来的项目经历能帮助验证这项能力。",
+        "es": "Tienes confianza en {label}. Los próximos proyectos ayudarán a comprobarlo.",
+        "fr": "Tu as confiance en {label}. Les prochains projets permettront de le confirmer.",
+        "de": "Du bist bei {label} zuversichtlich. Zukünftige Projekte können diese Stärke besser belegen.",
+    },
+    "portrait_unknown": {
+        "ko": "{label}에 대해서는 아직 판단할 직접적인 경험 정보가 충분하지 않아요. 앞으로 탐색할 기회가 있어요.",
+        "en": "There is not yet enough direct evidence about {label}. This is an opportunity to explore further.",
+        "zh": "目前关于{label}的直接证据还不够，这正是继续探索的机会。",
+        "es": "Aún no hay evidencia directa suficiente sobre {label}. Es una oportunidad para explorar.",
+        "fr": "Il n'y a pas encore assez d'éléments concrets concernant {label}. C'est une occasion d'explorer.",
+        "de": "Zu {label} gibt es noch nicht genügend direkte Belege. Das ist eine Chance zum weiteren Erkunden.",
+    },
+    "portrait_developing": {
+        "ko": "{sources}에서 {label}에 관한 경험이 조금씩 나타나고 있어요. 다양한 과제를 통해 더 발전시킬 수 있어요.",
+        "en": "Your {sources} suggests emerging experience in {label}. More practice will help develop this skill.",
+        "zh": "{sources}表明你在{label}方面逐渐积累经验。更多练习会帮助你成长。",
+        "es": "{sources} refleja experiencia creciente en {label}. La práctica ayudará a fortalecerla.",
+        "fr": "{sources} révèle une expérience croissante en {label}. La pratique aidera à la renforcer.",
+        "de": "{sources} weist auf wachsende Erfahrung in {label} hin. Weitere Praxis stärkt diese Fähigkeit.",
+    },
+    "sources_answers": {
+        "ko": "{sources}번 답변", "en": "answers {sources}", "zh": "第{sources}题的回答",
+        "es": "las respuestas {sources}", "fr": "les réponses {sources}", "de": "Antworten {sources}",
+    },
+    "sources_reflections": {
+        "ko": "자기 탐색 답변", "en": "your reflections", "zh": "你的反思",
+        "es": "tus reflexiones", "fr": "tes réflexions", "de": "deine Reflexionen",
+    },
+    "evolution_growth": {
+        "ko": "이전 탐색과 비교해 {strengths} 역량에서 향상된 모습을 보여요. 실제 경험을 바탕으로 자신감이 높아지고 있어요.",
+        "en": "Compared with your previous reflection, you have grown in {strengths} with stronger evidence from hands-on experience.",
+        "zh": "与上次分析相比，你在{strengths}方面有所进步，并积累了更多实践经验。",
+        "es": "En comparación con el ciclo anterior, has progresado en {strengths} con más experiencia práctica.",
+        "fr": "Par rapport au cycle précédent, tu progresses en {strengths}, avec davantage d'expérience pratique.",
+        "de": "Im Vergleich zum vorigen Zyklus hast du dich bei {strengths} mit mehr praktischer Erfahrung verbessert.",
+    },
+    "evolution_stable": {
+        "ko": "이번 탐색에서도 이전과 비슷한 역량 수준을 유지했어요. 경험을 쌓으며 평가의 근거가 더 풍부해지고 있어요.",
+        "en": "Your current reflection is consistent with your previous baseline, with additional evidence for your core strengths.",
+        "zh": "本轮分析结果与之前基本一致，核心能力的证据更加充分。",
+        "es": "Tu reflexión actual es coherente con la anterior, con más evidencia de tus competencias.",
+        "fr": "Cette réflexion reste cohérente avec la précédente et apporte plus d'éléments sur tes compétences.",
+        "de": "Deine aktuelle Reflexion entspricht weitgehend der vorherigen und liefert weitere Belege für deine Fähigkeiten.",
+    },
+}
+
+
+
+# Presentation-only fallbacks for additional reflection cycles.
+TEXTS.update({
+    "cycle_calibration_reason": {
+        "ko": "최근 성과({update})를 {job} 직무의 요구 역량과 비교했어요. {dimension} 역량의 성장 가능성을 바탕으로 {cycle}차 질문을 조정했습니다.",
+        "en": "We compared your recent milestone ({update}) with the needs of {job}. Cycle {cycle} now explores further growth in {dimension}.",
+        "zh": "我们将近期成果（{update}）与{job}的要求进行了对照。第{cycle}轮将继续探索{dimension}的成长空间。",
+        "es": "Comparamos tu logro reciente ({update}) con los requisitos de {job}. El ciclo {cycle} profundiza en {dimension}.",
+        "fr": "Nous avons comparé ton progrès récent ({update}) aux attentes du métier {job}. Le cycle {cycle} approfondit {dimension}.",
+        "de": "Wir haben deinen jüngsten Meilenstein ({update}) mit den Anforderungen von {job} verglichen. Zyklus {cycle} vertieft {dimension}.",
+    },
+    "cycle_calibration_bridge": {
+        "ko": "{cycle}차 자기 탐색에 오신 것을 환영해요. 최근 성과({update})를 바탕으로 실제 문제 해결 방식을 살펴볼게요.",
+        "en": "Welcome to cycle {cycle}! Building on your recent achievement ({update}), let's explore your practical decisions.",
+        "zh": "欢迎进入第{cycle}轮！结合近期成果（{update}），我们来探讨你的实践决策。",
+        "es": "¡Bienvenido al ciclo {cycle}! A partir de tu logro reciente ({update}), exploraremos tus decisiones prácticas.",
+        "fr": "Bienvenue au cycle {cycle} ! À partir de ton progrès récent ({update}), examinons tes décisions pratiques.",
+        "de": "Willkommen in Zyklus {cycle}! Auf Basis deines letzten Erfolgs ({update}) betrachten wir deine praktischen Entscheidungen.",
+    },
+    "cycle_probe_execution": {
+        "ko": "{dimension} 실행 상황", "en": "{dimension} execution scenarios", "zh": "{dimension}执行场景",
+        "es": "Situaciones prácticas de {dimension}", "fr": "Scénarios pratiques de {dimension}", "de": "Umsetzungsszenarien für {dimension}",
+    },
+    "cycle_probe_constraints": {
+        "ko": "제약 조건과 예외 상황 해결", "en": "Handling constraints and edge cases", "zh": "处理约束与边界情况",
+        "es": "Gestionar restricciones y casos límite", "fr": "Gérer les contraintes et les cas limites", "de": "Umgang mit Einschränkungen und Sonderfällen",
+    },
+    "cycle_probe_integration": {
+        "ko": "{job} 관련 시스템 통합", "en": "System integration for {job}", "zh": "{job}系统集成",
+        "es": "Integración de sistemas para {job}", "fr": "Intégration système pour {job}", "de": "Systemintegration für {job}",
+    },
+    "cycle_growth_gain": {
+        "ko": "+{count}점 역량 향상 목표", "en": "+{count} competency growth target", "zh": "+{count}点能力提升目标",
+        "es": "+{count} puntos de mejora de competencias", "fr": "+{count} points de progression visés", "de": "+{count} Punkte Kompetenzzuwachs als Ziel",
+    },
+})
+
+def qtext(key: str, **kwargs) -> str:
+    return msg(TEXTS[key], **kwargs)

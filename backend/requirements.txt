@@ -1,0 +1,15 @@
+# Engipath backend - minimal dependency set (handoff section 31).
+# Add the actual LLM SDK / retrieval deps only when the team picks a provider.
+#
+# Minimum-version pins so the latest compatible releases (incl. Python 3.14
+# support) are resolved at install time.
+
+fastapi>=0.115
+uvicorn[standard]>=0.34
+pydantic>=2.11
+python-dotenv>=1.0
+httpx>=0.28
+
+# Testing
+pytest>=8.3
+pytest-asyncio>=0.25
