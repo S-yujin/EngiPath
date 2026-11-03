@@ -90,6 +90,7 @@ export const FloatingRobotAvatar: React.FC<FloatingRobotAvatarProps> = ({
     autoPilotTargetId,
     autoPilotSpeech,
     runDemoAutoPilot,
+    startQuestionAutoPilot,
     cancelDemoAutoPilot,
     language
   } = useApp();
@@ -590,6 +591,13 @@ export const FloatingRobotAvatar: React.FC<FloatingRobotAvatarProps> = ({
   const handleSendMessage = async (textToSend?: string) => {
     const messageText = (textToSend || chatInput).trim();
     if (!messageText || isTyping) return;
+
+    if (messageText.toLowerCase() === '/questions') {
+      startQuestionAutoPilot();
+      setChatInput('');
+      setIsChatOpen(false);
+      return;
+    }
 
     // Demo Command Check
     const lower = messageText.toLowerCase();

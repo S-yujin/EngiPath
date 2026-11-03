@@ -31,6 +31,7 @@ export const OptionsDrawer: React.FC<OptionsDrawerProps> = ({ isOpen, onClose })
     isStepUnlocked,
     t,
     runDemoAutoPilot,
+    isQuestionAutoPilotRunning, startQuestionAutoPilot, cancelDemoAutoPilot,
     language
   } = useApp();
 
@@ -252,6 +253,18 @@ export const OptionsDrawer: React.FC<OptionsDrawerProps> = ({ isOpen, onClose })
                   <span><LocalizedText en={"Launch Engipath Auto-Pilot (Johnny)"} /></span>
                 </button>
               </div>
+
+              {currentStep === 3 && isAdminMode && (
+                <button type="button" onClick={() => {
+                  if (isQuestionAutoPilotRunning) cancelDemoAutoPilot();
+                  else startQuestionAutoPilot();
+                  onClose();
+                }} className="w-full py-2.5 px-3 rounded-xl bg-brand-navy text-white font-bold text-xs">
+                  {language === 'ko'
+                    ? (isQuestionAutoPilotRunning ? '자동 응답 중단' : '문제 자동 응답 시작')
+                    : (isQuestionAutoPilotRunning ? 'Stop automatic answers' : 'Start automatic answers')}
+                </button>
+              )}
 
               {/* Quick Persona Presets */}
               <div className="space-y-2.5">

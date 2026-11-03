@@ -129,6 +129,9 @@ export interface AppContextType {
   loadDemoProfile: (demoId: string) => void;
   resetAll: () => void;
   isAutoPilotRunning: boolean;
+  isQuestionAutoPilotRunning: boolean;
+  startQuestionAutoPilot: () => void;
+  setQuestionAutoPilotTarget: (id: string, speech: string) => void;
   autoPilotStep: string | null;
   autoPilotTargetId: string | null;
   autoPilotSpeech: string | null;
@@ -264,6 +267,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 
   // Demo Auto-Pilot State (Step 1 Johnny - AI)
   const cancelAutoPilotRef = useRef<boolean>(false);
+  const [isQuestionAutoPilotRunning, setIsQuestionAutoPilotRunning] = useState(false);
   const [isAutoPilotRunning, setIsAutoPilotRunning] = useState<boolean>(false);
   const [autoPilotStep, setAutoPilotStep] = useState<string | null>(null);
   const [autoPilotTargetId, setAutoPilotTargetId] = useState<string | null>(null);
@@ -407,7 +411,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const toggleAdminMode = (prefill: boolean = true) => {
     setIsAdminMode((prev) => {
       const next = !prev;
-      if (next && prefill) {
+      if (next && prefill && currentStep !== 3) {
         if (curatedCareers.length === 0 || !profile.transcriptUploaded) {
           skipToFuturePrefilled(currentStep > 0 ? currentStep : 1);
         }
@@ -1105,6 +1109,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   );
 
   const cancelDemoAutoPilot = useCallback(() => {
+    setIsQuestionAutoPilotRunning(false);
     cancelAutoPilotRef.current = true;
     setIsAutoPilotRunning(false);
     setAutoPilotStep(null);
@@ -1112,7 +1117,22 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     setAutoPilotSpeech(null);
   }, []);
 
+  const startQuestionAutoPilot = () => {
+    if (currentStep === 3 && isAdminMode && studentId && !isAutoPilotRunning) {
+      setIsQuestionAutoPilotRunning(true);
+    }
+  };
+  const setQuestionAutoPilotTarget = useCallback((id: string, speech: string) => {
+    setAutoPilotStep('question');
+    setAutoPilotTargetId(id);
+    setAutoPilotSpeech(speech);
+  }, []);
+  useEffect(() => {
+    if (isQuestionAutoPilotRunning) cancelDemoAutoPilot();
+  }, [currentStep, studentId, currentCycle, isAdminMode, cancelDemoAutoPilot]);
+
   const runDemoAutoPilot = useCallback(async () => {
+    setIsQuestionAutoPilotRunning(false);
     cancelAutoPilotRef.current = false;
     setIsAutoPilotRunning(true);
 
@@ -1381,7 +1401,10 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         isStepUnlocked,
         loadDemoProfile,
         resetAll,
-        isAutoPilotRunning,
+        isQuestionAutoPilotRunning,
+        startQuestionAutoPilot,
+        setQuestionAutoPilotTarget,
+        isAutoPilotRunning: isAutoPilotRunning || isQuestionAutoPilotRunning,
         autoPilotStep,
         autoPilotTargetId,
         autoPilotSpeech,

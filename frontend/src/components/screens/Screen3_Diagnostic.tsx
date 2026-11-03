@@ -4,6 +4,7 @@ import { localizeCareerTitle } from '../../i18n/careerLocalization';
 import React, { useState } from 'react';
 import { useApp } from '../../context/AppContext';
 import { useDiagnostic } from '../../hooks/useDiagnostic';
+import { questionOptionTarget } from '../../utils/questionAutoAnswer';
 import { RadarChart } from '../common/RadarChart';
 import { ConfidenceScore } from '../common/ConfidenceScore';
 import { ProgressBar } from '../common/ProgressBar';
@@ -29,6 +30,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 export const Screen3_Diagnostic: React.FC = () => {
   const {
     dynamicQuestion,
+    questionError,
     conversationalBridge,
     mentorInsight,
     isContradiction,
@@ -61,7 +63,8 @@ export const Screen3_Diagnostic: React.FC = () => {
     isCalibratingCycle,
     cycleCalibration,
     profile,
-    language
+    language,
+    isQuestionAutoPilotRunning,
   } = useApp();
 
   // State for inline refinement when user clicks "Not really / Refine"
@@ -603,6 +606,9 @@ export const Screen3_Diagnostic: React.FC = () => {
                     return (
                       <button
                         key={opt.id}
+                        id={questionOptionTarget(dynamicQuestion.id, opt.id)}
+                        disabled={isSubmitting || isQuestionAutoPilotRunning}
+                        aria-pressed={isSelected}
                         type="button"
                         onClick={() => toggleOption(opt.id)}
                         className={`w-full text-left p-3.5 rounded-xl border text-xs sm:text-sm font-medium flex items-center justify-between transition-all ${
@@ -669,8 +675,9 @@ export const Screen3_Diagnostic: React.FC = () => {
                   </p>
 
                   <button
-                    onClick={submitAnswer}
-                    disabled={selectedOptionIds.length === 0 || isSubmitting}
+                    id="question-submit"
+                    onClick={() => { if (!isQuestionAutoPilotRunning) void submitAnswer(); }}
+                    disabled={selectedOptionIds.length === 0 || isSubmitting || isQuestionAutoPilotRunning}
                     className={`flex items-center gap-2 px-6 py-2.5 rounded-xl text-xs font-extrabold shadow-sm transition-all ${
                       selectedOptionIds.length > 0 && !isSubmitting
                         ? 'bg-gradient-to-r from-brand-navy to-brand-navyLight hover:brightness-110 text-white cursor-pointer'
@@ -681,11 +688,12 @@ export const Screen3_Diagnostic: React.FC = () => {
                     <ArrowRight className="w-4 h-4 text-brand-gold" />
                   </button>
                 </div>
+                {questionError && <p role="alert" className="text-xs text-amber-700">{questionError}</p>}
               </motion.div>
             ) : (
               <div className="bg-white rounded-2xl p-8 border border-slate-200 text-center space-y-3">
                 <div className="w-8 h-8 rounded-full border-2 border-brand-teal border-t-transparent animate-spin mx-auto" />
-                <p className="text-xs text-slate-500 font-medium"><LocalizedText en={"Loading questionnaire engine..."} /></p>
+                <p role={questionError ? 'alert' : undefined} className="text-xs text-slate-500 font-medium">{questionError || <LocalizedText en={"Loading questionnaire engine..."} />}</p>
               </div>
             )}
           </AnimatePresence>
