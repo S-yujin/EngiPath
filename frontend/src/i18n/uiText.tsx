@@ -522,7 +522,6 @@ const KOREAN_EXTRA: Record<string, string> = {
   'Enthusiastic Areas to Validate': '추가 확인이 필요한 관심 분야',
   'Developing Picture': '성장 중인 역량',
   'Still Taking Shape': '추가 탐색이 필요한 역량',
-  'Confirmed Core Anchors': '확인된 핵심 강점',
   'Administration and Management': '경영 및 관리',
   'Additional evidence': '추가 근거',
   'Supported Strength': '근거가 확인된 강점',
